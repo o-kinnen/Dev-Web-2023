@@ -1,24 +1,15 @@
-/* Réinitialiser les styles par défaut */
-
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
-/* Styles généraux */
 
 body {
     font-family: sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 a {
@@ -26,17 +17,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: #007bff;
-}
-
 /* Styles de la section d'en-tête */
-
-header {
-    background-color: #f7f7f7;
-    padding: 20px 0;
-}
-
 header h1 {
     float: left;
     font-size: 50px;
@@ -49,44 +30,26 @@ header nav {
     float: right;
 }
 
-header ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
 header li {
     display: inline-block;
     margin-left: 20px;
 }
 
-header li:first-child {
-    margin-left: 0;
-}
-
-header a {
+li a {
     display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
-}
-
-header a:hover {
-    background-color: #007bff;
-    color: #fff;
+    padding: 15px;
 }
 
 /* Styles de la section héro */
-
-#hero {
+#presentation {
     background-image: url("https://via.placeholder.com/1200x600");
     background-size: cover;
     background-position: center;
     color: #fff;
-    padding: 100px 0;
+    padding: 100px;
 }
 
-#hero h2 {
+#presentation h2 {
     font-size: 45px;
     font-weight: bold;
     margin-bottom: 30px;
@@ -94,76 +57,86 @@ header a:hover {
     text-align: center;
 }
 
-#hero p {
+#presentation p {
     font-size: 20px;
     margin-bottom: 30px;
     text-align: center;
 }
 
-#hero .cta {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
+.activite-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 150px;
 }
 
-#hero .cta:hover {
-    background-color: #0062cc;
+.activite {
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
 }
 
-/* Styles de la section de contact */
-
-#contact {
-    background-color: #f7f7f7;
-    padding: 100px 0;
+.activite h3 {
+    margin-top: 10px;
 }
 
-#contact h2 {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: center
+#activite h2 {
+    padding-top: 20px;
+    text-align: center;
 }
 
-#contact form {
-    max-width: 600px;
-    margin: 0 auto;
+#services {
+    background-color: #f9f9f9;
+    padding: 20px;
 }
 
-#contact input[type="text"],
-#contact input[type="email"],
-#contact textarea {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+.services-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 150px;
 }
 
-#contact textarea {
-    height: 200px;
+.services {
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
 }
 
-#contact input[type="submit"] {
-    display: block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
+#services h2 {
+    text-align: center;
 }
 
-#contact input[type="submit"]:hover {
-    background-color: #0062cc;
+.services h3 {
+    margin-top: 10px;
+}
+
+.realisation-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 150px;
+}
+
+.realisation {
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+#realisation {
+    padding: 20px;
+}
+
+#realisation h2 {
+    text-align: center;
+}
+
+.realisation h3 {
+    margin-top: 10px;
 }
 
 /* Styles du pied de page */
-
 footer {
     background-color: #333;
     color: #fff;
@@ -172,73 +145,7 @@ footer {
 }
 
 footer p {
-    margin: 0;
-    padding: 0;
     text-align: center;
-}
-
-footer a {
-    color: #fff;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #007bff;
-}
-
-.center {
-    text-align: center;
-}
-
-#activite .container {
-    text-align: center;
-}
-
-.activite-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.activite {
-    display: flex;
-    flex-direction: column;
-    margin: 0 20px;
-}
-
-#activite h2 {
-    text-align: center;
-}
-
-#services {
-    background-color: #f9f9f9;
-    padding: 80px 0;
-}
-
-.services-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.services {
-    margin: 0 30px 30px;
-    text-align: center;
-    width: 300px;
-}
-
-.services img {
-    width: 100%;
-}
-
-.services h3 {
-    margin-top: 20px;
-}
-
-.services p {
-    margin-top: 10px;
-    font-size: 16px;
 }
 
 .cta {
@@ -251,29 +158,3 @@ footer a:hover {
     border-radius: 5px;
     text-decoration: none;
 }
-
-#realisation .container {
-    text-align: center;
-}
-
-.realisation-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.realisation {
-    display: flex;
-    flex-direction: column;
-    margin: 0 20px;
-}
-
-#realisation h2 {
-    text-align: center;
-}
-
-
-
-
-
