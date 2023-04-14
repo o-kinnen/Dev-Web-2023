@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Produits</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Sotrexco</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/secteur">Secteur d'activités</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="/realisation">Réalisation</a></li>
+                    <li><a href="#">Connexion/Inscription</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="app">
+
+        <fieldset>
+            <legend>Filtre sur le nom</legend>
+            <input type="text" v-model="filtreNom">
+        </fieldset>
+
+        <fieldset>
+            <legend>Options</legend>
+            ID <input type="checkbox" checked v-model="ID">
+            Category <input type="checkbox" checked v-model="Title">
+            Title <input type="checkbox" checked v-model="Category">
+            Description <input type="checkbox" v-model="Description">
+            Photo
+            <select v-model="taille">
+                <option value="1" selected>Petit</option>
+                <option value="2" >Moyen</option>
+                <option value="3">Grand</option>
+            </select>
+        </fieldset>
+
+        <div v-for="product in products">
+            <div v-if="(product.title.indexOf(filtreNom)>=0 
+            || filtreNom=='')">
+                <img v-if="taille==1" :src="product.image" width="100">
+                <img v-else-if="taille==2" :src="product.image" width="300">
+                <img v-else="taille==3" :src="product.image" width="500">
+                <div v-if="ID">ID : {{product.id}} </div> 
+                <div v-if="Title">Titre : {{product.title}} </div> 
+                <div v-if="Category">Catégorie : {{product.category}}</div>
+                <div v-if="Description">Description : {{product.description}}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    ID : true,
+                    Title : true,
+                    Category : true, 
+                    Description : false,
+                    taille: 1,
+                    filtreNom: '',
+                    products: []
+                }
+            },
+            created() {
+                axios.get('https://fakestoreapi.com/products?limit=3').then(function (reponse) {
+                    vm.products = reponse.data;
+                })
+
+            }
+        });
+        let vm = app.mount('#app');
+    </script>
+
+</body>
+
+</html>
