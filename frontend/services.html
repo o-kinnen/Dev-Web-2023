@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>activités</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h1>Nos différentes activités</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="/produit">Produits</a></li>
+            <li><a href="#">Connexion/Inscription</a></li>
+        </ul>
+    </nav>
+    <div class="activite-container">
+        <div class="activite">
+            <img src="https://via.placeholder.com/325x200" alt="Produit 1">
+            <h3>Analyse</h3>
+            <p>Petite description</p>
+            <a href="#" class="cta">En savoir plus</a>
+        </div>
+        <div class="activite">
+            <img src="https://via.placeholder.com/325x200" alt="Produit 2">
+            <h3>Free On Board </h3>
+            <p>Petite description</p>
+            <a href="#" class="cta">En savoir plus</a>
+        </div>
+        <div class="activite">
+            <img src="https://via.placeholder.com/325x200" alt="Produit 3">
+            <h3>activité 3</h3>
+            <p>Petite description</p>
+            <a href="#" class="cta">En savoir plus</a>
+        </div>
+    </div>
+</div>
+<script>
+    app = Vue.createApp({
+
+    });
+    //fonction qui execute la fonction mount sur l'objet créé par la première instruction
+    app.mount("#app");
+</script>
+</body>
+</html>
