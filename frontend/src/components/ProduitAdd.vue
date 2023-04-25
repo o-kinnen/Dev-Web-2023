@@ -24,15 +24,16 @@ export default {
     },
     methods : {
         addProduit() {
-            axios.post('http://localhost:3000/produits', {
-                nom: this.nomProduit
-        })
+        if (this.nomProduit.trim() === "") {
+        return;
+        }
+        axios.post(`http://localhost:3000/produits/${this.nomProduit}`)
         .then(() => {
             this.showForm = false;
             this.nomProduit = "";
         })
         .catch(error => {
-        console.log(error);
+            console.log(error);
         });
         }
     }
