@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr v-for="(produit, index) in listeProduit" :key="index">
-          <td>{{produit.id_produit}}</td>
+          <td>{{ produit.id_produit }}</td>
           <td v-if="!produit.editMode">{{ produit.nom }}</td>
           <td v-else><input type="text" v-model="produit.nom"></td>
           <td>
@@ -29,25 +29,25 @@
 import axios from 'axios';
 export default {
   name: "ProduitsAffichage",
-  props : ['listeProduit'],
-  methods : {
+  props: ['listeProduit'],
+  methods: {
     deleteProduit(id) {
       axios.delete(`http://localhost:3000/produits/${id}`)
-      .then(() => {
-        this.getProduits();
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        .then(() => {
+          this.getProduits();
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
     updateProduit(produit) {
       axios.put(`http://localhost:3000/produits/${produit.id_produit}`, produit)
-     .then(() => {
-      produit.editMode = false;
-     })
-     .catch(error => {
-      console.log(error);
-     });
+        .then(() => {
+          produit.editMode = false;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
@@ -126,7 +126,6 @@ export default {
 }
 
 td button {
-  margin : 8px;
+  margin: 8px;
 }
-
 </style>

@@ -1,19 +1,20 @@
 <template>
   <body>
-  <header>
-    <div class="container">
-      <h1><router-link to="/">Sotrexco</router-link></h1>
-      <nav>
-        <ul>
-          <li><router-link to="/produits">Produits</router-link></li>
-          <li><router-link to="/service">Service proposer</router-link></li>
-          <li><router-link to="/realisation">Réalisation</router-link></li>
-          <li><router-link to="/connexion">Connexion/Inscription</router-link></li>
-        </ul>
-      </nav>
-      <router-view></router-view>
-    </div>
-  </header>
+    <header>
+      <div class="container">
+        <h1><router-link to="/">Sotrexco</router-link></h1>
+        <nav>
+          <ul>
+            <li><router-link to="/produits">Produits</router-link></li>
+            <li><router-link to="/service">Service proposer</router-link></li>
+            <li><router-link to="/realisation">Réalisation</router-link></li>
+            <li><router-link to="/inscription">Inscription</router-link></li>
+            <li><router-link to="/connexion">Connexion</router-link></li>
+          </ul>
+        </nav>
+        <router-view></router-view>
+      </div>
+    </header>
   </body>
 </template>
 
@@ -57,5 +58,4 @@ header li {
   margin: 20px 15px;
   position: relative;
 }
-
 </style>
