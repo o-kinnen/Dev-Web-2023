@@ -37,13 +37,11 @@ app.get('/produits/:id', async (req, res) => {
 });
 
 // Route "produit" pour ajouter un produit
-app.post('/produits', async (req, res) => {
-    const nom_produit = req.body.nom;
+app.post('/produits/:nom', async (req, res) => {
+    const nom_produit = req.params.nom;
     try {
       const result = await db.pool.query(
-        'INSERT INTO tb_produits (nom) VALUES (?)',
-        nom_produit
-      );
+        'INSERT INTO tb_produits (nom) VALUES (?)', nom_produit);
       console.log(result);
       res.sendStatus(200);
     } catch (err) {
