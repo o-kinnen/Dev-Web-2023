@@ -12,7 +12,7 @@ import ProduitAdd from "../components/ProduitAdd.vue";
 
 export default {
   name: "ProduitsSotrexco",
-  components : {
+  components: {
     ProduitsListe,
     ProduitAdd
   },
@@ -40,6 +40,4 @@ export default {
 </script>
 
 
-<style scoped>
-
-</style>
+<style scoped></style>

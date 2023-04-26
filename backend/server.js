@@ -91,4 +91,32 @@ app.put('/produits/:id', async (req, res) => {
       console.log(err);
       res.sendStatus(500);
     }
+<<<<<<< HEAD
 });
+=======
+  });
+
+  // Route "réalisation" pour récupérer toutes les réalisations
+app.get('/realisation', async (req, res) => {
+  try {
+      const result = await db.pool.query("select * from tb_realisations");
+      console.log(result);
+      res.send(result);
+  } catch (err) {
+      console.log(err);
+  }
+});
+
+// Route "réalisation" pour récupérer un réalisation par son id
+app.get('/realisation/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+      const result = await db.pool.query("select * from tb_realisations where id_realisation =?", id);
+      console.log(result);
+      res.send(result);
+  } catch (err) {
+      console.log(err);
+  }
+});
+  
+>>>>>>> 89afe33b95d5f5ca29e2734b4395345a4aed5cce
