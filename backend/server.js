@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./database');
-
 const app = express();
 
 app.use(cors());
@@ -80,3 +79,14 @@ app.put('/produits/:id', async (req, res) => {
     }
   });
   
+//Route "client" pour afficher tous les clients
+app.get("/clients", async (req, res) =>{
+    try {
+        const result = await db.pool.query("select * from tb_clients");
+        res.json(result)
+    }
+    catch (e) {
+        console.error(e)
+    }
+})
+
