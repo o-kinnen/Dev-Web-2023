@@ -91,9 +91,6 @@ app.put('/produits/:id', async (req, res) => {
       console.log(err);
       res.sendStatus(500);
     }
-<<<<<<< HEAD
-});
-=======
   });
 
   // Route "réalisation" pour récupérer toutes les réalisations
@@ -118,5 +115,3 @@ app.get('/realisation/:id', async (req, res) => {
       console.log(err);
   }
 });
-  
->>>>>>> 89afe33b95d5f5ca29e2734b4395345a4aed5cce
