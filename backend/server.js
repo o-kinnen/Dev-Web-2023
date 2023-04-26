@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(3000, () =>{
-    console.log('Le serveur écoute sur le port 3000!');
+    console.log('Le serveur écoute sur le port 3100!');
 });
 
 // Route "produit" pour récupérer tous les produits
@@ -25,16 +25,29 @@ app.get('/produits', async (req, res) => {
 });
 
 // Route "produit" pour récupérer un produit par son id
-app.get('/produits/:id', async (req, res) => {
-    const id = req.params.id;
-    try {
-        const result = await db.pool.query("select * from tb_produits where id_produit =?", id);
-        console.log(result);
-        res.send(result);
-    } catch (err) {
-        console.log(err);
-    }
+app.get('/produits/id', async (req, res) => {
+  const id = req.query.valeur;
+  try {
+      const result = await db.pool.query("select * from tb_produits where id_produit =?", id);
+      console.log(result);
+      res.send(result);
+  } catch (err) {
+      console.log(err);
+  }
 });
+
+// Route "produit" pour récupérer un produit par son nom
+app.get('/produits/nom', async (req, res) => {
+  const nom = req.query.valeur;
+  try {
+      const result = await db.pool.query("select * from tb_produits where nom =?", nom);
+      console.log(result);
+      res.send(result);
+  } catch (err) {
+      console.log(err);
+  }
+});
+
 
 // Route "produit" pour ajouter un produit
 app.post('/produits/:nom', async (req, res) => {
@@ -102,4 +115,3 @@ app.get('/realisation/:id', async (req, res) => {
       console.log(err);
   }
 });
-  
