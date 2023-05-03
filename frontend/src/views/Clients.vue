@@ -4,20 +4,20 @@
   <table class="clients-table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Prénom</th>
-        <th>Nom</th>
+        <th>Nom de la société</th>
+        <th>Personne de contact</th>
+        <th>Fonction</th>
+        <th>numéro de téléphone</th>
         <th>adresse e-mail</th>
-        <th>nom de la société</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="(client, index) in clients" :key="index">
-        <td>{{client.id_client}}</td>
-        <td>{{client.prenom}}</td>
-        <td>{{client.nom}}</td>
-        <td>{{client.mail_client}}</td>
         <td>{{client.nom_societe}}</td>
+        <td>{{client.prenom}} {{client.nom}}</td>
+        <td>{{client.fonction}}</td>
+        <td><a href="tel:{{client.telephone}}">{{client.telephone}}</a></td>
+        <td><a href="mailto:{{client.mail_client}}">{{client.mail_client}}</a></td>
       </tr>
     </tbody>
   </table>
@@ -28,9 +28,12 @@ import axios from "axios";
 
 export default {
   name: "ClientsSotrexco",
+
   data() {
+    //let chiffre = 0;
     return {
       clients: []
+      //numero : chiffre.concat(this.client.telephone)
     }
   },
   mounted() {
@@ -38,6 +41,7 @@ export default {
   },
   methods: {
     getClients() {
+      //
       axios.get('http://localhost:3000/clients')
           .then(response => {
             this.clients = response.data;
@@ -45,8 +49,9 @@ export default {
           .catch(error => {
             console.log(error);
           });
-    }
+      }
   }
+
 }
 
 </script>
