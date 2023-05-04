@@ -102,7 +102,17 @@ app.get("/clients", async (req, res) =>{
         console.error(e)
     }
 })
-
+//route pour récup un seul client
+app.get("/clients/:id", async (req, res) =>{
+    const id = req.params.id;
+    try {
+        const result = await db.pool.query("select * from tb_clients where id_client=?", id);
+        res.json(result)
+    }
+    catch (e) {
+        console.error(e)
+    }
+})
 
 // Route "réalisation" pour récupérer toutes les réalisations
 app.get('/realisation', async (req, res) => {

@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(client, index) in clients" :key="index">
+        <tr>
           <td>{{client.nom_societe}}</td>
           <td>{{client.prenom}} {{client.nom}}</td>
           <td>{{client.fonction}}</td>
@@ -27,33 +27,40 @@
         </tr>
         </tbody>
       </table>
+      <button color="red" @click="$emit('fermer')">fermer</button>
     </div>
   </div>
 
 </template>
 
 
-  <script>
+<script>
 
-  /*import axios from "axios";
-
-  export default {
-    name: "ModaleClients",
-    props : ["clients"],
-    methods: {
-      getClients() {
-        //
-        axios.get('http://localhost:3000/clients')
-            .then(response => {
-              this.clients = response.data;
-            })
-            .catch(error => {
-              console.log(error);
-            });
-      }
+import axios from "axios";
+export default {
+  name: "ModaleClients",
+  props : ["id_client"],
+  methods: {
+    getClient() {
+      axios.get('http://localhost:3000/clients/' + this.id_client)
+          .then(response => {
+            this.client = response.data[0];
+          })
+          .catch(error => {
+            console.log(error);
+          });
     }
-  }*/
-  </script>
+  },
+  data(){
+    return {
+      client : {}
+    }
+  },
+  mounted() {
+    this.getClient();
+  },
+}
+</script>
 
 
   <style></style>

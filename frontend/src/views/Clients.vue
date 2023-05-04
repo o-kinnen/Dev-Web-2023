@@ -14,26 +14,30 @@
     <tbody>
       <tr v-for="(client, index) in clients" :key="index">
         <td>{{client.nom_societe}}</td>
-        <td>{{client.prenom}} {{client.nom}}</td>
+        <td @click="ouvrirModale(client.id_client)">{{client.prenom}} {{client.nom}}</td>
         <td>{{client.fonction}}</td>
-        <td><a href="tel:{{client.telephone}}">{{client.telephone}}</a></td>
-        <td><a href="mailto:{{client.mail_client}}">{{client.mail_client}}</a></td>
+        <td><a :href="`tel:${client.telephone}`">{{client.telephone}}</a></td>
+        <td><a :href="`mailto:${client.mail_client}`">{{client.mail_client}}</a></td>
       </tr>
     </tbody>
   </table>
+  <modale-clients @fermer="modaleOuverte=false" v-if="modaleOuverte == true" :id_client="modaleIdClient"></modale-clients>
 </template>
 
 <script>
 import axios from "axios";
+import ModaleClients from "@/components/ModaleClients";
 
 export default {
   name: "ClientsSotrexco",
-
+  components: {
+    ModaleClients
+  },
   data() {
-    //let chiffre = 0;
     return {
-      clients: []
-      //numero : chiffre.concat(this.client.telephone)
+      clients: [],
+      modaleOuverte : false,
+      modaleIdClient : null
     }
   },
   mounted() {
@@ -49,7 +53,11 @@ export default {
           .catch(error => {
             console.log(error);
           });
-      }
+      },
+    ouvrirModale(id_client){
+      this.modaleOuverte = true;
+      this.modaleIdClient = id_client;
+    }
   }
 
 }
