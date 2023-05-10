@@ -1,7 +1,7 @@
 <template>
   <div>
-    <produitsListe :listeProduit="produits"></produitsListe>
-    <produitAdd></produitAdd>
+    <produitsListe :listeProduit="produits" :getProduits="getProduits"></produitsListe>
+    <produitAdd :getProduits="getProduits"></produitAdd>
   </div>
 </template>
 
@@ -23,7 +23,6 @@ export default {
   },
   mounted() {
     this.getProduits();
-    //setInterval(this.getProduits, 10000); // actualiser les données toutes les 10 secondes
   },
   methods: {
     getProduits() {
