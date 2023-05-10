@@ -1,0 +1,88 @@
+<template>
+  <br><br><br><br><br><br>
+  <h1>Vous êtes sur la page des clients</h1>
+  <table class="clients-table">
+    <thead>
+      <tr>
+        <th>Nom de la société</th>
+        <th>Personne de contact</th>
+        <th>Fonction</th>
+        <th>numéro de téléphone</th>
+        <th>adresse e-mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(client, index) in clients" :key="index">
+        <td>{{client.nom_societe}}</td>
+        <td @click="ouvrirModale(client.id_client)">{{client.prenom}} {{client.nom}}</td>
+        <td>{{client.fonction}}</td>
+        <td><a :href="`tel:${client.telephone}`">{{client.telephone}}</a></td>
+        <td><a :href="`mailto:${client.mail_client}`">{{client.mail_client}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <modale-clients @fermer="modaleOuverte=false" v-if="modaleOuverte == true" :id_client="modaleIdClient"></modale-clients>
+</template>
+
+<script>
+import axios from "axios";
+import ModaleClients from "@/components/ModaleClients";
+
+export default {
+  name: "ClientsSotrexco",
+  components: {
+    ModaleClients
+  },
+  data() {
+    return {
+      clients: [],
+      modaleOuverte : false,
+      modaleIdClient : null
+    }
+  },
+  mounted() {
+    this.getClients();
+  },
+  methods: {
+    getClients() {
+      //
+      axios.get('http://localhost:3000/clients')
+          .then(response => {
+            this.clients = response.data;
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
+    ouvrirModale(id_client){
+      this.modaleOuverte = true;
+      this.modaleIdClient = id_client;
+    }
+  }
+
+}
+
+</script>
+
+<style scoped>
+.clients-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.clients-table th {
+  background: #f5f5f5;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+}
+
+.clients-table td {
+  font-size: 16px;
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid black;
+}
+
+</style>
