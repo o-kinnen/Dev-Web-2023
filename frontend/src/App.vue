@@ -6,9 +6,10 @@
         <nav>
           <ul>
             <li><router-link to="/produits">Produits</router-link></li>
-            <li><router-link to="/service">Service proposer</router-link></li>
+            <li><router-link to="/service">Services</router-link></li>
             <li><router-link to="/realisation">Réalisation</router-link></li>
             <li><router-link to="/inscription">Inscription</router-link></li>
+            <li><router-link to="/clients">Liste des clients</router-link></li>
             <li><router-link to="/connexion">Connexion</router-link></li>
           </ul>
         </nav>
