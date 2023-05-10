@@ -3,7 +3,7 @@
   <h1>Vous etes sur la page des services</h1>
   <h2>Voici les différents services disponibles</h2>
   <div>
-    <a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi !</a>
+    <a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a>
     <servicesListe :listeService="services"></servicesListe>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
   },
   mounted() {
     this.getServices();
-    setInterval(this.getServices, 5000); //actualisation toutes les 5 secondes
+//    setInterval(this.getServices, 5000); //actualisation toutes les 5 secondes
   },
   methods: {
     getServices() {
