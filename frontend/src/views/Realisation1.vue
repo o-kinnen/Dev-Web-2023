@@ -1,17 +1,11 @@
 <template>
   <br><br><br><br><br><br>
-  <div>
-    <div class="titre">
-      <h1>{{ titre }}</h1>
-    </div>
-  </div>
-  <br><br><br><br><br>
   <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
-    <img :src="images[realisation.id_realisation-1]"/>
+    <h1>{{realisation.nom_realisation}}</h1>
     <p>{{realisation.type_realisation}}</p>
-    <p>{{realisation.nom_realisation}}</p>
     <p>{{realisation.info_realisation}}</p>
-    <a :href="/realisation/ + realisation.id_realisation">En savoir plus</a>
+    <p>Ceci est un exemple de description</p>
+    <img src="../img/realisations/img1.jpg"/>
   </div>
 </template>
 
@@ -21,9 +15,7 @@ export default {
   name: "RealisationSotrexco",
   data() {
     return {
-      images: [require('../img/realisations/img1.jpg'), require('../img/realisations/img2.jpg'), require('../img/realisations/img3.jpg')],
-      realisations: [],
-      titre : "Nos différentes réalisations"
+      realisations: []
     }
   },
   mounted() {
@@ -32,7 +24,7 @@ export default {
   },
   methods: {
     getRealisations() {
-      axios.get('http://localhost:3000/realisation')
+      axios.get('http://localhost:3000/realisation/1')
         .then(response => {
           this.realisations = response.data;
         })
@@ -45,15 +37,9 @@ export default {
 </script>
 
 <style scoped>
-  .titre {
-    text-align: center;
-  }
-  img {
-      float: left;
-      margin-right: 1rem;
-    }
     .real {
       clear: left;
       padding: 1rem;
+      text-align: center;
     }
 </style>

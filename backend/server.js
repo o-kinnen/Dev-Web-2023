@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(3000, () =>{
-    console.log('Le serveur écoute sur le port 3100!');
+    console.log('Le serveur écoute sur le port 3000!');
 });
 
 // Route "produit" pour récupérer tous les produits
@@ -125,7 +125,7 @@ app.get('/realisation', async (req, res) => {
     }
 });
 
-// Route "réalisation" pour récupérer un réalisation par son id
+// Route "réalisation" pour récupérer une réalisation par son id
 app.get('/realisation/:id', async (req, res) => {
     const id = req.params.id;
     try {
