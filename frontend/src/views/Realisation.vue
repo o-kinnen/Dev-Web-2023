@@ -7,30 +7,33 @@
   </div>
   <br><br><br><br><br>
   <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
-    <img v-if="realisation.id_realisation==1" src="../img/realisations/img1.jpg"/>
-    <img v-else-if="realisation.id_realisation==2" src="../img/realisations/img2.jpg"/>
-    <img v-else-if="realisation.id_realisation==3" src="../img/realisations/img3.jpg"/>
+    <img :src="getImage(realisation.id_realisation)"/>
     <p>{{realisation.type_realisation}}</p>
     <p>{{realisation.nom_realisation}}</p>
     <p>{{realisation.info_realisation}}</p>
-    <button href="">En savoir plus</button>
+    <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 
+// Utiliser la fonction require.context pour charger toutes les images
+const imagesContext = require.context('../img/realisations', false, /\.(png|jpe?g|gif|webp)$/);
+const images = imagesContext.keys().map(key => imagesContext(key));
+
 export default {
   name: "RealisationSotrexco",
   data() {
     return {
+      images: images,
       realisations: [],
       titre : "Nos différentes réalisations"
     }
   },
   mounted() {
     this.getRealisations();
-    setInterval(this.getRealisations, 10000); // actualise les données toutes les 10 secondes
+    //setInterval(this.getRealisations, 10000); // actualise les données toutes les 10 secondes
   },
   methods: {
     getRealisations() {
@@ -41,6 +44,10 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    getImage(realisationId) {
+      // Retourner l'image correspondante à l'identifiant de réalisation
+      return this.images[realisationId - 1];
     }
   }
 }

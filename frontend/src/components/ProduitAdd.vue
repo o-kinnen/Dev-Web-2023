@@ -14,8 +14,14 @@
 
 <script>
 import axios from 'axios';
+
 export default {
     name: "ProduitsAdd",
+    props: {
+        getProduits: {
+            type: Function
+        }
+    },
     data() {
         return {
             showForm: false,
@@ -31,6 +37,7 @@ export default {
                 .then(() => {
                     this.showForm = false;
                     this.nomProduit = "";
+                    this.getProduits();
                 })
                 .catch(error => {
                     console.log(error);
