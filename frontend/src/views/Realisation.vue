@@ -7,21 +7,26 @@
   </div>
   <br><br><br><br><br>
   <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
-    <img :src="images[realisation.id_realisation-1]"/>
+    <img :src="getImage(realisation.id_realisation)"/>
     <p>{{realisation.type_realisation}}</p>
     <p>{{realisation.nom_realisation}}</p>
     <p>{{realisation.info_realisation}}</p>
-    <a :href="/realisation/ + realisation.id_realisation">En savoir plus</a>
+    <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+
+// Utiliser la fonction require.context pour charger toutes les images
+const imagesContext = require.context('../img/realisations', false, /\.(png|jpe?g|gif|webp)$/);
+const images = imagesContext.keys().map(key => imagesContext(key));
+
 export default {
   name: "RealisationSotrexco",
   data() {
     return {
-      images: [require('../img/realisations/img1.jpg'), require('../img/realisations/img2.jpg'), require('../img/realisations/img3.jpg')],
+      images: images,
       realisations: [],
       titre : "Nos différentes réalisations"
     }
@@ -39,6 +44,10 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    getImage(realisationId) {
+      // Retourner l'image correspondante à l'identifiant de réalisation
+      return this.images[realisationId - 1];
     }
   }
 }
