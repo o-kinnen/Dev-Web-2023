@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./database');
 const app = express();
+const jose = require("jose");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -159,4 +160,35 @@ app.get('/service/:id', async (req, res) => {
         console.log(err);
     }
 });
+//on va devoir hacher le mdp
+app.post('/login', async (req, res) => {
+    const mail = req.body.mail;
+    const mdp = req.body.mdp;
+    try {
+        const result = await db.pool.query(
+            "select mail_client from tb_clients where mail_client =? and mdp =?", [mail, mdp]
+        );//rajouter dans le select
+        if (result.length > 0){
+            const secret = new TextEncoder().encode(
+                'cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2',
+            )
+            const alg = 'HS256'
 
+            const jwt = await new jose.SignJWT({ "role": ["admin"] }) //mettre à droite de rôle : result[0].role
+                .setProtectedHeader({ alg })
+                .setIssuedAt()
+                .setSubject(mail)
+                .setExpirationTime('2h')
+                .sign(secret)
+
+            res.setHeader("Authorization", jwt)
+            res.sendStatus(200)
+        }
+        else {
+            res.sendStatus(401);// non authorisée
+        }
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500)// erreur dans le processus;
+    }
+});
