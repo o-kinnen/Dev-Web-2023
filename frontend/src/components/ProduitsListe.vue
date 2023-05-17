@@ -22,14 +22,28 @@
         </tr>
       </tbody>
     </table>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+
 export default {
   name: "ProduitsAffichage",
-  props: ['listeProduit'],
+  props: {
+    listeProduit: {
+      type: Array
+    },
+    getProduits: {
+      type: Function
+    }
+  },
+  data() {
+    return {
+      errorMessage: ""
+    }
+  },
   methods: {
     deleteProduit(id) {
       axios.delete(`http://localhost:3000/produits/${id}`)
@@ -41,12 +55,19 @@ export default {
         });
     },
     updateProduit(produit) {
-      axios.put(`http://localhost:3000/produits/${produit.id_produit}`, produit)
+      if (!produit.nom) {
+        this.errorMessage = 'Le champ nom ne peut pas être vide.';
+        return;
+      }
+      axios
+        .put(`http://localhost:3000/produits/${produit.id_produit}`, produit)
         .then(() => {
           produit.editMode = false;
+          this.errorMessage = ''; // Réinitialiser le message d'erreur
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
+          this.errorMessage = 'Une erreur s\'est produite lors de la mise à jour du produit.';
         });
     }
   }
@@ -127,5 +148,10 @@ export default {
 
 td button {
   margin: 8px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }
 </style>
