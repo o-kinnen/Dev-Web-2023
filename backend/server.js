@@ -95,7 +95,7 @@ app.put('/produits/:id', async (req, res) => {
 //Route "client" pour afficher tous les clients
 app.get("/clients", async (req, res) => {
   try {
-    const result = await db.pool.query("select * from tb_clients");
+    const result = await db.pool.query("select * from tb_utilisateur");
     res.json(result)
   }
   catch (e) {
@@ -106,7 +106,7 @@ app.get("/clients", async (req, res) => {
 app.get("/clients/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const result = await db.pool.query("select * from tb_clients where id_client=?", id);
+    const result = await db.pool.query("select * from tb_utilisateur where id_client=?", id);
     res.json(result)
   }
   catch (e) {
@@ -165,7 +165,7 @@ app.post('/login', async (req, res) => {
     const mdp = req.body.mdp;
     try {
         const result = await db.pool.query(
-            "select mail_client from tb_clients where mail_client =? and mdp =?", [mail, mdp]
+            "select mail_client from tb_utilisateur where mail_client =? and mdp =?", [mail, mdp]
         );//rajouter dans le select
         if (result.length > 0){
             const secret = new TextEncoder().encode(

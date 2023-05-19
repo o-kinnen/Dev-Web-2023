@@ -7,11 +7,11 @@ import Service1 from "@/views/Service1";
 import Service2 from "@/views/Service2";
 import Service3 from "@/views/Service3";
 import Connexion from "@/views/Connexion";
-import Inscription from "@/views/Inscription";
 import Realisation1 from "@/views/Realisation1";
 import Realisation2 from "@/views/Realisation2";
 import Realisation3 from "@/views/Realisation3";
-import Clients from "@/views/Clients"
+import Clients from "@/views/Clients";
+import Profile from "@/views/Profile"
 
 const router = createRouter({
     history: createWebHistory(),
@@ -61,12 +61,12 @@ const router = createRouter({
             component: Connexion
         },
         {
-            path: "/inscription",
-            component: Inscription
-        },
-        {
             path: "/clients",
             component: Clients
+        },
+        {
+            path: "/profile",
+            component: Profile
         }
     ]
 })
