@@ -27,7 +27,7 @@
 <script>
 import axios from "axios";
 import ModaleClients from "@/components/ModaleClients";
-
+import { API } from "@/main";
 export default {
   name: "ClientsSotrexco",
   components: {
@@ -46,7 +46,7 @@ export default {
   methods: {
     getClients() {
       //
-      axios.get('http://localhost:3000/clients')
+      axios.get(API + '/clients')
           .then(response => {
             this.clients = response.data;
           })
