@@ -7,16 +7,17 @@
   </div>
   <br><br><br><br><br>
   <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
-    <img :src="getImage(realisation.id_realisation)"/>
-    <p>{{realisation.type_realisation}}</p>
-    <p>{{realisation.nom_realisation}}</p>
-    <p>{{realisation.info_realisation}}</p>
+    <img :src="getImage(realisation.id_realisation)" />
+    <p>{{ realisation.type_realisation }}</p>
+    <p>{{ realisation.nom_realisation }}</p>
+    <p>{{ realisation.info_realisation }}</p>
     <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { API } from "@/main";
 
 // Utiliser la fonction require.context pour charger toutes les images
 const imagesContext = require.context('../img/realisations', false, /\.(png|jpe?g|gif|webp)$/);
@@ -28,16 +29,15 @@ export default {
     return {
       images: images,
       realisations: [],
-      titre : "Nos différentes réalisations"
+      titre: "Nos différentes réalisations"
     }
   },
   mounted() {
     this.getRealisations();
-    //setInterval(this.getRealisations, 10000); // actualise les données toutes les 10 secondes
   },
   methods: {
     getRealisations() {
-      axios.get('http://localhost:3000/realisation')
+      axios.get(API + '/realisation')
         .then(response => {
           this.realisations = response.data;
         })
@@ -54,15 +54,17 @@ export default {
 </script>
 
 <style scoped>
-  .titre {
-    text-align: center;
-  }
-  img {
-      float: left;
-      margin-right: 1rem;
-    }
-    .real {
-      clear: left;
-      padding: 1rem;
-    }
+.titre {
+  text-align: center;
+}
+
+img {
+  float: left;
+  margin-right: 1rem;
+}
+
+.real {
+  clear: left;
+  padding: 1rem;
+}
 </style>

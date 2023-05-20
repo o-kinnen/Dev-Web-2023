@@ -28,6 +28,7 @@
 
 <script>
 import axios from 'axios';
+import { API } from "@/main";
 
 export default {
   name: "ProduitsAffichage",
@@ -46,7 +47,7 @@ export default {
   },
   methods: {
     deleteProduit(id) {
-      axios.delete(`http://localhost:3000/produits/${id}`)
+      axios.delete(API + `/produits/${id}`)
         .then(() => {
           this.getProduits();
         })
@@ -60,7 +61,7 @@ export default {
         return;
       }
       axios
-        .put(`http://localhost:3000/produits/${produit.id_produit}`, produit)
+        .put(API + `/produits/${produit.id_produit}`, produit)
         .then(() => {
           produit.editMode = false;
           this.errorMessage = ''; // Réinitialiser le message d'erreur
