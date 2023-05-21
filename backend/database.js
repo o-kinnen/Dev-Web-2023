@@ -10,3 +10,9 @@ const pool = mariadb.createPool(JSON.parse(dbConfig));
 module.exports = Object.freeze({
     pool: pool
 }); 
+
+
+
+
+
+

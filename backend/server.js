@@ -6,11 +6,85 @@ const app = express();
 const jose = require("jose");
 
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(3000, () => {
   console.log('Le serveur écoute sur le port 3000!');
+});
+
+// Route "creationCompte" pour ajouter un utilisateur
+app.post('/creationCompte', async (req, res) => {
+  const nom = req.body.nom;
+  const mdp = req.body.mdp;
+  const role = req.body.role;
+  const fonction = req.body.fonction;
+  const telephone = req.body.telephone;
+  const nom_societe = req.body.nom_societe;
+  const mail_client = req.body.mail_client;
+  const prenom = req.body.prenom;
+  try {
+    const result = await db.pool.query(
+      'INSERT INTO tb_utilisateur (nom, mdp, role, fonction, telephone, nom_societe, mail_client, prenom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nom, mdp, role, fonction, telephone, nom_societe, mail_client, prenom]);
+    console.log(result);
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+// Route "connexionCompte" pour qu'un utilisateur puisse se connecter
+app.post('/connexionCompte', async (req, res) => {
+  const mdp = req.body.mdp;
+  const mail_client = req.body.mail_client;
+  try {
+    const result = await db.pool.query(
+      'SELECT * FROM tb_utilisateur WHERE mdp=? AND mail_client=?', [mdp, mail_client]);
+    //N'existe pas dans la table à améliorer car hardcodé
+    if (result.length === 0){
+      res.sendStatus(500);
+    }
+    else {
+      console.log(result);
+      res.send(result);
+    }
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+// Route "infos" afficher les infos du compte
+/*app.post('/infos', async (req, res) => {
+  const mdp = req.body.mdp;
+  const mail_client = req.body.mail_client;
+  console.log(mdp);
+  console.log(mail_client);
+  try {
+    const result = await db.pool.query(
+      'SELECT nom, prenom, nom_societe, fonction, telephone, mail_client FROM tb_utilisateur WHERE mdp=? AND mail_client=?', [mdp, mail_client]);
+    console.log(result);
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});*/
+
+// Route "infos" pour récupérer toutes les infos
+app.get('/infos', async (req, res) => {
+  const mdp = req.body.mdp;
+  const mail_client = req.body.mail_client;
+  try {
+    const result = await db.pool.query(
+      'SELECT * FROM tb_utilisateur WHERE mdp=? AND mail_client=?', [mdp, mail_client]);
+    console.log(result);
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Route "produit" pour récupérer tous les produits
@@ -55,7 +129,7 @@ app.post('/produits/:nom', async (req, res) => {
     const result = await db.pool.query(
       'INSERT INTO tb_produits (nom) VALUES (?)', nom_produit);
     console.log(result);
-    res.sendStatus(200);
+    res.sendStatus(201);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
@@ -159,6 +233,7 @@ app.get('/service/:id', async (req, res) => {
     console.log(err);
   }
 });
+
 //on va devoir hacher le mdp
 app.post('/login', async (req, res) => {
     const mail = req.body.mail;
@@ -181,7 +256,7 @@ app.post('/login', async (req, res) => {
                 .sign(secret)
 
             res.setHeader("Authorization", jwt)
-            res.sendStatus(200)
+            res.sendStatus(201)
         }
         else {
             res.sendStatus(401);// non authorisée
