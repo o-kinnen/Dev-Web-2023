@@ -1,6 +1,5 @@
 
 <template>
-
   <!-- Modal -->
   <div class="modal fade" id="modal" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog modal-lg">
@@ -14,22 +13,22 @@
             <div class="modal-wrapper">
               <table class="modale-clients-table">
                 <thead>
-                <tr>
-                  <th>Nom de la société</th>
-                  <th>Personne de contact</th>
-                  <th>Fonction</th>
-                  <th>numéro de téléphone</th>
-                  <th>adresse e-mail</th>
-                </tr>
+                  <tr>
+                    <th>Nom de la société</th>
+                    <th>Personne de contact</th>
+                    <th>Fonction</th>
+                    <th>numéro de téléphone</th>
+                    <th>adresse e-mail</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>{{client.nom_societe}}</td>
-                  <td>{{client.prenom}} {{client.nom}}</td>
-                  <td>{{client.fonction}}</td>
-                  <td><a href="tel:{{client.telephone}}">{{client.telephone}}</a></td>
-                  <td><a href="mailto:{{client.mail_client}}">{{client.mail_client}}</a></td>
-                </tr>
+                  <tr>
+                    <td>{{ client.nom_societe }}</td>
+                    <td>{{ client.prenom }} {{ client.nom }}</td>
+                    <td>{{ client.fonction }}</td>
+                    <td><a href="tel:{{client.telephone}}">{{ client.telephone }}</a></td>
+                    <td><a href="mailto:{{client.mail_client}}">{{ client.mail_client }}</a></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -45,32 +44,33 @@
 
 
 <script>
-import {Modal} from "bootstrap"
+import { Modal } from "bootstrap"
 import axios from "axios";
+import { API } from "@/main";
 export default {
   name: "ModaleClients",
-  props : ["id_client"],
+  props: ["id_client"],
   methods: {
     getClient() {
-      axios.get('http://localhost:3000/clients/' + this.id_client)
-          .then(response => {
-            this.client = response.data[0];
-          })
-          .catch(error => {
-            console.log(error);
-          });
+      axios.get(API + '/clients/' + this.id_client)
+        .then(response => {
+          this.client = response.data[0];
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
-  data(){
+  data() {
     return {
-      client : {}
+      client: {}
     }
   },
   mounted() {
     this.getClient();
     const modaleElem = document.getElementById("modal");
     const modale = new Modal(modaleElem);
-    modaleElem.addEventListener("hidden.bs.modal",  ()=>{
+    modaleElem.addEventListener("hidden.bs.modal", () => {
       this.$emit("fermer")
     });
     modale.show();

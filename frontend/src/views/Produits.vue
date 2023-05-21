@@ -9,6 +9,7 @@
 import axios from 'axios';
 import ProduitsListe from "../components/ProduitsListe.vue";
 import ProduitAdd from "../components/ProduitAdd.vue";
+import { API } from "@/main";
 
 export default {
   name: "ProduitsSotrexco",
@@ -26,12 +27,12 @@ export default {
   },
   methods: {
     getProduits() {
-      axios.get('http://localhost:3000/produits')
+      axios.get(API + '/produits')
         .then(response => {
           this.produits = response.data;
         })
         .catch(error => {
-          console.log(error);
+          console.error('Erreur lors de la récupération des produits :', error);
         });
     }
   }

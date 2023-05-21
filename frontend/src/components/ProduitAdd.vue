@@ -14,6 +14,7 @@
 
 <script>
 import axios from 'axios';
+import { API } from "@/main";
 
 export default {
     name: "ProduitsAdd",
@@ -33,7 +34,7 @@ export default {
             if (this.nomProduit.trim() === "") {
                 return;
             }
-            axios.post(`http://localhost:3000/produits/${this.nomProduit}`)
+            axios.post(API + `/produits/${this.nomProduit}`)
                 .then(() => {
                     this.showForm = false;
                     this.nomProduit = "";

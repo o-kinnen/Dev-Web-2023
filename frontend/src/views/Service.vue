@@ -12,30 +12,30 @@
 
 import axios from 'axios';
 import ServicesListe from "../components/ServicesListe.vue";
+import { API } from "@/main";
 
 export default {
   name: "ServiceSotrexco",
-  components : {
+  components: {
     ServicesListe
   },
-  data(){
+  data() {
     return {
       services: []
     }
   },
   mounted() {
     this.getServices();
-//    setInterval(this.getServices, 5000); //actualisation toutes les 5 secondes
   },
   methods: {
     getServices() {
-      axios.get('http://localhost:3000/service')
-          .then(response => {
-            this.services = response.data;
-          })
-          .catch(error => {
-            console.log(error);
-          })
+      axios.get(API + '/service')
+        .then(response => {
+          this.services = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        })
     }
   }
 
@@ -43,6 +43,4 @@ export default {
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
