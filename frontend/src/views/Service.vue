@@ -1,11 +1,13 @@
 <template>
   <br><br><br><br>
-  <h1>Vous etes sur la page des services</h1>
+  <h1>Services</h1>
   <h2>Voici les différents services disponibles</h2>
-  <div>
-    <a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a>
+  <a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a>
+  <br><br>
+  <div class="service">
     <servicesListe :listeService="services"></servicesListe>
   </div>
+  <p><a :href = "/commande/" >Commander</a></p>
 </template>
 
 <script>
@@ -43,4 +45,21 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.service{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+}
+
+servicesListe{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p{
+  text-align: center;
+}
+
+</style>

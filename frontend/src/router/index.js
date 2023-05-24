@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Produits from '../views/Produits.vue'
-import Accueil from "../views/Accueil"
+import { createRouter, createWebHistory } from 'vue-router';
+import Produits from '../views/Produits.vue';
+import Accueil from "../views/Accueil";
 import Realisation from "@/views/Realisation";
 import Service from "@/views/Service";
 import Service1 from "@/views/Service1";
@@ -11,7 +11,8 @@ import Realisation1 from "@/views/Realisation1";
 import Realisation2 from "@/views/Realisation2";
 import Realisation3 from "@/views/Realisation3";
 import Clients from "@/views/Clients";
-import Profile from "@/views/Profile"
+import Profile from "@/views/Profile";
+import Commande from "@/views/Commande";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -67,6 +68,10 @@ const router = createRouter({
         {
             path: "/profile",
             component: Profile
+        },
+        {
+            path: "/commande",
+            component: Commande
         }
     ]
 })

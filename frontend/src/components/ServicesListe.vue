@@ -1,5 +1,5 @@
 <template>
-  <br><br>
+
   <div v-for="(service, index) in listeService" :key="index">
     <img :src ="images[service.id_service - 1]" width = "150" height = "150">
     <p>{{service.nom_service}}</p>
@@ -23,6 +23,11 @@ export default {
 </script>
 
 <style scoped>
-
-
+div{
+  border: 1px solid #000;
+}
+img{
+  margin: auto;
+  display: block;
+}
 </style>
