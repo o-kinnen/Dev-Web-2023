@@ -5,7 +5,6 @@ const axios = require('axios');
 const instance = axios.create({
     baseURL: 'http://localhost:3000'
 });
-
 let utilisateur = localStorage.getItem('utilisateur');
 if (!utilisateur) {
     utilisateur = {
@@ -26,6 +25,7 @@ else {
 }
 const store = createStore({
     state: {
+        token:"",
         statut: '',
         utilisateur: utilisateur,
         utilisateurInfos: {
@@ -42,9 +42,13 @@ const store = createStore({
         initStatut: function(state, statut){
             state.statut = statut;
         },
-        connexionUtilisateur: function(state, utilisateur){
+        connexionUtilisateur: function(state, data){
+            const utilisateur = data.utilisateur;
+            const token = data.token;
+            console.log(token);
             //instance.defaults.headers.common['Authorization'] = utilisateur.token;
             localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+            state.token = token;
             state.utilisateur = utilisateur;
         },
         utilisateurInfos: function (state, utilisateurInfos){
@@ -62,10 +66,10 @@ const store = createStore({
         connexionCompte: ({commit}, utilisateurInfos) => {
             commit('initStatut', 'chargement');
             return new Promise((resolve, reject) => {
-                instance.post('/connexionCompte', utilisateurInfos)
+                instance.post('/login', utilisateurInfos)
                 .then(function (response){
-                    commit('initStatut','');
-                    commit('connexionUtilisateur', response.data);
+                    commit('initStatut','');                
+                    commit('connexionUtilisateur', response.data);                
                     resolve(response);
                 })
                 .catch(function (error){

@@ -3,7 +3,9 @@
   <div class="card">
     <h1 class="card__title">Espace Perso</h1>
     <p class="card__subtitle">Voilà donc qui je suis...</p>
-    <p>{{profile.prenom}} {{profile.nom}} {{profile.mail_client}}</p>
+    <p>{{utilisateur.prenom}}{{utilisateur.nom}} </p>
+    <p>{{utilisateur.mail_client}}</p>
+    <p>{{ token }}</p>
     <div class="form-row">
       <button @click="deconnexion()" class="button">
         Déconnexion
@@ -18,7 +20,7 @@
     name: "ProfileSotrexco",
     data () {
       return {
-        profile: []
+        
       }
     },
     mounted: function () {
@@ -32,7 +34,7 @@
     },
     computed: {
       ...mapState({
-        utilisateur: 'utilisateurInfos',
+        utilisateur: 'utilisateur', token: "token"
       })
     },
     methods: {
