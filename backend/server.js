@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const db = require('./database');
 const app = express();
 const jose = require("jose");
+const bcrypt = require('bcrypt');
 
 app.use(cors());
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(3000, () => {
   console.log('Le serveur écoute sur le port 3000!');
 });
+
 
 // Route "creationCompte" pour ajouter un utilisateur
 app.post('/creationCompte', async (req, res) => {
@@ -24,9 +26,11 @@ app.post('/creationCompte', async (req, res) => {
   const nom_societe = req.body.nom_societe;
   const mail_client = req.body.mail_client;
   const prenom = req.body.prenom;
+  
   try {
+    const hashedPassword = await bcrypt.hash(mdp, 10); // Hash du mot de passe avec un coût de 10
     const result = await db.pool.query(
-      'INSERT INTO tb_utilisateur (nom, mdp, role, fonction, telephone, nom_societe, mail_client, prenom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nom, mdp, role, fonction, telephone, nom_societe, mail_client, prenom]);
+      'INSERT INTO tb_utilisateur (nom, mdp, role, fonction, telephone, nom_societe, mail_client, prenom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nom, hashedPassword, role, fonction, telephone, nom_societe, mail_client, prenom]);
     console.log(result);
     res.send(result);
   } catch (err) {
@@ -34,6 +38,7 @@ app.post('/creationCompte', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
 
 // Route "connexionCompte" pour qu'un utilisateur puisse se connecter
 app.post('/connexionCompte', async (req, res) => {
@@ -240,10 +245,14 @@ app.post('/login', async (req, res) => {
     const mdp = req.body.mdp;
     try {
         const result = await db.pool.query(
-            "select mail_client, prenom, nom, role, nom_societe, telephone from tb_utilisateur where mail_client =? and mdp =?", [mail, mdp]
+            "select mail_client, prenom, nom, role, nom_societe, telephone, mdp from tb_utilisateur where mail_client =?", mail
         );//rajouter dans le select
         if (result.length > 0){
           const utilisateur = result[0];
+          const hashedPassword = utilisateur.mdp;
+          const passwordMatch = await bcrypt.compare(mdp, hashedPassword);
+          
+          if (passwordMatch) {
           const secret = new TextEncoder().encode(
               'cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2',
             )
@@ -259,7 +268,7 @@ app.post('/login', async (req, res) => {
             
             res.status(201).json({utilisateur:utilisateur, token:jwt})
           }
-        else {
+        } else {
             res.sendStatus(401);// non authorisée
         }
     } catch (err) {

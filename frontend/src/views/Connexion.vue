@@ -112,7 +112,7 @@ export default {
         telephone: this.telephone,
         fonction: this.fonction,
         mdp: this.mdp,
-        role: "admin"
+        role: "client"
       }).then(function () {
         self.connexionCompte();
       }, function (error) {
