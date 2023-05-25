@@ -1,18 +1,19 @@
 <template>
-  <br><br><br><br><br><br>
-  <div>
-    <div class="titre">
+  <section id="intro">
+    <div>
       <h1>{{ titre }}</h1>
     </div>
-  </div>
-  <br><br><br><br><br>
-  <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
-    <img :src="getImage(realisation.id_realisation)" />
-    <p>{{ realisation.type_realisation }}</p>
-    <p>{{ realisation.nom_realisation }}</p>
-    <p>{{ realisation.info_realisation }}</p>
-    <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
-  </div>
+  </section>
+
+  <section id="real">
+    <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
+      <img :src="getImage(realisation.id_realisation)" />
+      <p>{{ realisation.type_realisation }}</p>
+      <p>{{ realisation.nom_realisation }}</p>
+      <p>{{ realisation.info_realisation }}</p>
+      <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -54,7 +55,14 @@ export default {
 </script>
 
 <style scoped>
-.titre {
+
+#intro {
+  padding-top: 100px;
+}
+
+#intro h1 {
+  font-size: 45px;
+  font-weight: bold;
   text-align: center;
 }
 

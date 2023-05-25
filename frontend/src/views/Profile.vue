@@ -3,9 +3,9 @@
   <div class="card">
     <h1 class="card__title">Espace Perso</h1>
     <p class="card__subtitle">Voilà donc qui je suis...</p>
-    <p>{{utilisateur.prenom}}{{utilisateur.nom}} </p>
+    <p>{{utilisateur.prenom}} {{utilisateur.nom}} </p>
     <p>{{utilisateur.mail_client}}</p>
-    <p>{{ token }}</p>
+    <!----<p>{{ token }}</p>-->
     <div class="form-row">
       <button @click="deconnexion()" class="button">
         Déconnexion

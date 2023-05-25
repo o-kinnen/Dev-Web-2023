@@ -66,7 +66,7 @@ const store = createStore({
         connexionCompte: ({commit}, utilisateurInfos) => {
             commit('initStatut', 'chargement');
             return new Promise((resolve, reject) => {
-                instance.post('/login', utilisateurInfos)
+                instance.post('/connexionCompte', utilisateurInfos)
                 .then(function (response){
                     commit('initStatut','');                
                     commit('connexionUtilisateur', response.data);                
