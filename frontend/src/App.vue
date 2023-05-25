@@ -1,7 +1,6 @@
 <template>
   <body>
     <header>
-      <div class="container">
         <h1><router-link to="/">Sotrexco</router-link></h1>
         <nav>
           <ul>
@@ -13,8 +12,8 @@
           </ul>
         </nav>
         <router-view></router-view>
-      </div>
     </header>
+
   </body>
 </template>
 
@@ -27,11 +26,6 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-}
-
-.container {
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 a {

@@ -1,13 +1,20 @@
 <template>
-  <br><br><br><br>
-  <h1>Services</h1>
-  <h2>Voici les différents services disponibles</h2>
-  <a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a>
-  <br><br>
-  <div class="service">
-    <servicesListe :listeService="services"></servicesListe>
-  </div>
-  <p><a :href = "/commande/" >Commander</a></p>
+  <section id="intro">
+    <div class="container">
+      <h2>Bienvenue sur la page des services</h2>
+      <p>Voici les différents services disponibles</p>
+    </div>
+  </section>
+
+  <section id="service">
+    <div class="service">
+      <servicesListe :listeService="services"></servicesListe>
+    </div>
+    <div class="contact">
+      <p><a :href = "/commande/" >Commander</a></p>
+      <p><a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a></p>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -46,6 +53,21 @@ export default {
 </script>
 
 <style scoped>
+
+#intro {
+  padding-top: 100px;
+}
+
+#intro h2 {
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#intro p {
+  font-size: 20px;
+  text-align: center;
+}
 
 .service{
   display: grid;
