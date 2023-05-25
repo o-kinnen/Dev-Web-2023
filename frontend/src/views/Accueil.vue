@@ -110,12 +110,6 @@ export default {
   text-align: center;
 }
 
-#presentation p {
-  font-size: 20px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
 .activite-container {
   display: flex;
   flex-wrap: wrap;
@@ -127,6 +121,7 @@ export default {
   margin: 20px;
   text-align: center;
   padding: 20px;
+
 }
 
 .activite h3 {
