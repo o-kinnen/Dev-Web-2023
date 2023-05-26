@@ -1,8 +1,24 @@
 <template>
-  <div>
-    <produitsListe :listeProduit="produits" :getProduits="getProduits"></produitsListe>
-    <produitAdd :getProduits="getProduits"></produitAdd>
-  </div>
+  <body>
+    <header>
+      <en-tête/>
+    </header>
+
+    <main>
+      <div class="container">
+        <h2>Bienvenue sur la page des produits</h2>
+      </div>
+
+      <div>
+        <produitsListe :listeProduit="produits" :getProduits="getProduits"></produitsListe>
+        <produitAdd :getProduits="getProduits"></produitAdd>
+      </div>
+    </main>
+
+    <footer>
+      <bas-de-page/>
+    </footer>
+  </body>
 </template>
 
 <script>
@@ -10,10 +26,14 @@ import axios from 'axios';
 import ProduitsListe from "../components/ProduitsListe.vue";
 import ProduitAdd from "../components/ProduitAdd.vue";
 import { API } from "@/main";
+import EnTête from "@/components/EnTête";
+import BasDePage from "@/components/BasDePage";
 
 export default {
   name: "ProduitsSotrexco",
   components: {
+    BasDePage,
+    EnTête,
     ProduitsListe,
     ProduitAdd
   },
@@ -38,6 +58,23 @@ export default {
   }
 }
 </script>
+<style scoped>
 
+.container h2 {
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+}
 
-<style scoped></style>
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+</style>

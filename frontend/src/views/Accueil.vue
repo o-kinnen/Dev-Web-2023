@@ -1,100 +1,110 @@
 <template>
-  <section id="presentation">
-    <div class="container">
-      <h2>Qui somme nous ?</h2>
-      <p>blablabla</p>
-    </div>
-  </section>
+  <body>
+    <header>
+      <EnTête/>
+    </header>
 
-  <section id="activite">
-    <div class="container">
-      <h2 class="center">Nos différents secteurs d'activités</h2>
-      <br>
-      <div class="activite-container">
-        <div class="activite">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 1">
-          <h3>Industries</h3>
-          <p>Petite description</p>
-          <a href="/industrie" class="cta">En savoir plus</a>
+    <main>
+      <section id="presentation">
+        <div class="container">
+          <h2>Qui somme nous ?</h2>
+          <p>blablabla</p>
         </div>
-        <div class="activite">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 2">
-          <h3>Alimentaire</h3>
-          <p>Petite description</p>
-          <a href="/alimentaire" class="cta">En savoir plus</a>
-        </div>
-        <div class="activite">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 3">
-          <h3>Bien d'équipement</h3>
-          <p>Petite description</p>
-          <a href="/equipement" class="cta">En savoir plus</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section id="services">
-    <div class="container">
-      <h2 class="center">Les services proposés</h2>
-      <br>
-      <div class="services-container">
-        <div class="services">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 1">
-          <h3>Industries</h3>
-          <p>Petite description</p>
-          <a href="/service" class="cta">En savoir plus</a>
+      <section id="activite">
+        <div class="container">
+          <h2 class="center">Nos différents secteurs d'activités</h2>
+          <br>
+          <div class="activite-container">
+            <div class="activite">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 1">
+              <h3>Industries</h3>
+              <p>Petite description</p>
+              <a href="/industrie" class="cta">En savoir plus</a>
+            </div>
+            <div class="activite">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 2">
+              <h3>Alimentaire</h3>
+              <p>Petite description</p>
+              <a href="/alimentaire" class="cta">En savoir plus</a>
+            </div>
+            <div class="activite">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 3">
+              <h3>Bien d'équipement</h3>
+              <p>Petite description</p>
+              <a href="/equipement" class="cta">En savoir plus</a>
+            </div>
+          </div>
         </div>
-        <div class="services">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 2">
-          <h3>Alimentaire</h3>
-          <p>Petite description</p>
-          <a href="/service" class="cta">En savoir plus</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section id="realisation">
-    <div class="container">
-      <h2 class="center">Nos réalisations</h2>
+      <section id="services">
+        <div class="container">
+          <h2 class="center">Les services proposés</h2>
+          <br>
+          <div class="services-container">
+            <div class="services">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 1">
+              <h3>Industries</h3>
+              <p>Petite description</p>
+              <a href="/service" class="cta">En savoir plus</a>
+            </div>
+            <div class="services">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 2">
+              <h3>Alimentaire</h3>
+              <p>Petite description</p>
+              <a href="/service" class="cta">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="realisation-container">
-        <div class="realisation">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 1">
-          <h3>~~~~~~~~~~~~~~~~~~</h3>
-          <p>Petite description</p>
-          <a href="/realisation" class="cta">En savoir plus</a>
-        </div>
-        <div class="realisation">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 2">
-          <h3>~~~~~~~~~~~~~~~~~~</h3>
-          <p>Petite description</p>
-          <a href="/realisation" class="cta">En savoir plus</a>
-        </div>
-        <div class="realisation">
-          <img src="https://via.placeholder.com/325x200" alt="Produit 3">
-          <h3>~~~~~~~~~~~~~~~~~~</h3>
-          <p>Petite description</p>
-          <a href="/realisation" class="cta">En savoir plus</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <section id="realisation">
+        <div class="container">
+          <h2 class="center">Nos réalisations</h2>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 Sotrexco</p>
-    </div>
-  </footer>
+          <div class="realisation-container">
+            <div class="realisation">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 1">
+              <h3>~~~~~~~~~~~~~~~~~~</h3>
+              <p>Petite description</p>
+              <a href="/realisation" class="cta">En savoir plus</a>
+            </div>
+            <div class="realisation">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 2">
+              <h3>~~~~~~~~~~~~~~~~~~</h3>
+              <p>Petite description</p>
+              <a href="/realisation" class="cta">En savoir plus</a>
+            </div>
+            <div class="realisation">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 3">
+              <h3>~~~~~~~~~~~~~~~~~~</h3>
+              <p>Petite description</p>
+              <a href="/realisation" class="cta">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <BasDePage/>
+    </footer>
+  </body>
 </template>
 
 <script>
+import EnTête from "@/components/EnTête";
+import BasDePage from "@/components/BasDePage";
 export default {
-  name: "AccueilSotrexco"
+  name: "AccueilSotrexco",
+  components: {BasDePage, EnTête}
 }
 </script>
 
 <style scoped>
+
 #presentation {
   background-image: url("");
   background-size: cover;
@@ -185,15 +195,15 @@ export default {
 }
 
 /* Styles du pied de page */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  margin-top: 50px;
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-footer p {
-  text-align: center;
+main {
+  flex: 1;
 }
 
 .cta {
@@ -206,4 +216,5 @@ footer p {
   border-radius: 5px;
   text-decoration: none;
 }
+
 </style>

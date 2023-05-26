@@ -1,23 +1,38 @@
 <template>
-  <br><br><br><br><br><br>
-  <div class="card">
-    <h1 class="card__title">Espace Perso</h1>
-    <p class="card__subtitle">Voilà donc qui je suis...</p>
-    <p>{{utilisateur.prenom}} {{utilisateur.nom}} </p>
-    <p>{{utilisateur.mail_client}}</p>
-    <!----<p>{{ token }}</p>-->
-    <div class="form-row">
-      <button @click="deconnexion()" class="button">
-        Déconnexion
-      </button>
-    </div>
-  </div>
+  <body>
+    <header>
+      <en-tête/>
+    </header>
+
+    <main>
+      <div class="card">
+        <h1 class="card__title">Espace Perso</h1>
+        <p class="card__subtitle">Voilà donc qui je suis...</p>
+        <p>{{utilisateur.prenom}}{{utilisateur.nom}} </p>
+        <p>{{utilisateur.mail_client}}</p>
+        <p>{{ token }}</p>
+        <div class="form-row">
+          <button @click="deconnexion()" class="button">
+            Déconnexion
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <bas-de-page/>
+    </footer>
+  </body>
 </template>
+
 <script>
   //import axios from 'axios';
   import { mapState } from 'vuex'
+  import EnTête from "@/components/EnTête";
+  import BasDePage from "@/components/BasDePage";
   export default {
     name: "ProfileSotrexco",
+    components: {BasDePage, EnTête},
     data () {
       return {
         
@@ -56,4 +71,16 @@
 </script>
   
 <style scoped>
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 </style>

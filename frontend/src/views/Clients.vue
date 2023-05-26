@@ -1,8 +1,13 @@
 <template>
-  <br><br><br><br><br><br>
-  <h1>Vous êtes sur la page des clients</h1>
-  <table class="clients-table">
-    <thead>
+  <body>
+    <header>
+      <en-tête/>
+    </header>
+
+  <main>
+    <h1>Vous êtes sur la page des clients</h1>
+    <table class="clients-table">
+      <thead>
       <tr>
         <th>Nom de la société</th>
         <th>Personne de contact</th>
@@ -10,8 +15,9 @@
         <th>numéro de téléphone</th>
         <th>adresse e-mail</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+
+      <tbody>
       <tr v-for="(client, index) in clients" :key="index">
         <td>{{client.nom_societe}}</td>
         <td @click="ouvrirModale(client.id_client)">{{client.prenom}} {{client.nom}}</td>
@@ -19,18 +25,28 @@
         <td><a :href="`tel:${client.telephone}`">{{client.telephone}}</a></td>
         <td><a :href="`mailto:${client.mail_client}`">{{client.mail_client}}</a></td>
       </tr>
-    </tbody>
-  </table>
-  <modale-clients @fermer="modaleOuverte=false" v-if="modaleOuverte == true" :id_client="modaleIdClient"></modale-clients>
+      </tbody>
+    </table>
+    <modale-clients @fermer="modaleOuverte=false" v-if="modaleOuverte == true" :id_client="modaleIdClient"></modale-clients>
+  </main>
+
+    <footer>
+      <bas-de-page/>
+    </footer>
+  </body>
 </template>
 
 <script>
 import axios from "axios";
 import ModaleClients from "@/components/ModaleClients";
 import { API } from "@/main";
+import EnTête from "@/components/EnTête";
+import BasDePage from "@/components/BasDePage";
 export default {
   name: "ClientsSotrexco",
   components: {
+    BasDePage,
+    EnTête,
     ModaleClients
   },
   data() {
@@ -83,6 +99,17 @@ export default {
   text-align: left;
   padding: 12px 15px;
   border-bottom: 1px solid black;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 </style>

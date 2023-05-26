@@ -1,20 +1,32 @@
 <template>
-  <section id="intro">
-    <div class="container">
-      <h2>Bienvenue sur la page des services</h2>
-      <p>Voici les différents services disponibles</p>
-    </div>
-  </section>
+  <body>
+    <header>
+      <en-tête/>
+    </header>
 
-  <section id="service">
-    <div class="service">
-      <servicesListe :listeService="services"></servicesListe>
-    </div>
-    <div class="contact">
-      <p><a :href = "/commande/" >Commander</a></p>
-      <p><a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a></p>
-    </div>
-  </section>
+    <main>
+      <section id="intro">
+        <div class="container">
+          <h2>Bienvenue sur la page des services</h2>
+          <p>Voici les différents services disponibles</p>
+        </div>
+      </section>
+
+      <section id="service">
+        <div class="service">
+          <servicesListe :listeService="services"></servicesListe>
+        </div>
+        <div class="contact">
+          <p><a :href = "/commande/" >Commander</a></p>
+          <p><a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <bas-de-page/>
+    </footer>
+  </body>
 </template>
 
 <script>
@@ -22,10 +34,14 @@
 import axios from 'axios';
 import ServicesListe from "../components/ServicesListe.vue";
 import { API } from "@/main";
+import EnTête from "@/components/EnTête";
+import BasDePage from "@/components/BasDePage";
 
 export default {
   name: "ServiceSotrexco",
   components: {
+    BasDePage,
+    EnTête,
     ServicesListe
   },
   data() {
@@ -54,10 +70,6 @@ export default {
 
 <style scoped>
 
-#intro {
-  padding-top: 100px;
-}
-
 #intro h2 {
   font-size: 45px;
   font-weight: bold;
@@ -82,6 +94,17 @@ servicesListe{
 
 p{
   text-align: center;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 </style>

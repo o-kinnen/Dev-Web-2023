@@ -1,24 +1,36 @@
 <template>
-  <section id="intro">
-    <div>
-      <h1>{{ titre }}</h1>
-    </div>
-  </section>
+  <body>
+    <header>
+      <en-tête/>
+    </header>
 
-  <section id="real">
-    <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
-      <img :src="getImage(realisation.id_realisation)" />
-      <p>{{ realisation.type_realisation }}</p>
-      <p>{{ realisation.nom_realisation }}</p>
-      <p>{{ realisation.info_realisation }}</p>
-      <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
-    </div>
-  </section>
+    <main>
+      <div>
+        <div class="titre">
+          <h1>{{ titre }}</h1>
+        </div>
+      </div>
+      <br><br><br><br><br>
+      <div class="real" v-for="realisation in realisations" :key="realisation.id_realisation">
+        <img :src="getImage(realisation.id_realisation)" />
+        <p>{{ realisation.type_realisation }}</p>
+        <p>{{ realisation.nom_realisation }}</p>
+        <p>{{ realisation.info_realisation }}</p>
+        <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
+      </div>
+    </main>
+
+    <footer>
+      <bas-de-page/>
+    </footer>
+  </body>
 </template>
 
 <script>
 import axios from 'axios';
 import { API } from "@/main";
+import EnTête from "@/components/EnTête";
+import BasDePage from "@/components/BasDePage";
 
 // Utiliser la fonction require.context pour charger toutes les images
 const imagesContext = require.context('../img/realisations', false, /\.(png|jpe?g|gif|webp)$/);
@@ -26,6 +38,7 @@ const images = imagesContext.keys().map(key => imagesContext(key));
 
 export default {
   name: "RealisationSotrexco",
+  components: {BasDePage, EnTête},
   data() {
     return {
       images: images,
@@ -55,14 +68,7 @@ export default {
 </script>
 
 <style scoped>
-
-#intro {
-  padding-top: 100px;
-}
-
-#intro h1 {
-  font-size: 45px;
-  font-weight: bold;
+.titre {
   text-align: center;
 }
 
@@ -74,5 +80,16 @@ img {
 .real {
   clear: left;
   padding: 1rem;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 </style>

@@ -1,48 +1,62 @@
 <template>
-  <br /><br /><br /><br /><br />
-  <div>
-    <h1 v-if="mode == 'connexion'">Connexion</h1>
-    <h1 v-else>Inscription</h1>
-    <p v-if="mode == 'connexion'">Tu n as pas encore de compte ?<span class="card__action" @click="switchInscription()">Créer un compte</span></p>
-    <p v-else>Tu as déjà un compte ?<span class="card__action" @click="switchConnexion()">Se connecter</span></p>
-    <div class="form-row">
-      <input v-model="mail_client" class="form-row__input" type="text" placeholder="Adresse mail"/>
-    </div>
-    <div class="form-row" v-if="mode == 'creation'">
-      <input v-model="prenom" class="form-row__input" type="text" placeholder="Prénom"/>
-      <input v-model="nom" class="form-row__input" type="text" placeholder="Nom"/>
-      <input v-model="nom_societe" class="form-row__input" type="text" placeholder="Nom de la société" />
-      <input v-model="telephone" class="form-row__input" type="text" placeholder="Téléphone"/>
-      <input v-model="fonction" class="form-row__input" type="text" placeholder="Fonction"/>
-    </div>
-    <div class="form-row">
-      <input v-model="mdp" class="form-row__input" type="password" placeholder="Mot de passe"/>
-    </div>
-    <div class="form-row" v-if="mode == 'connexion' && statut == 'erreur_connexion'">
-      Adresse mail et/ou mot de passe invalide
-    </div>
-    <div class="form-row" v-if="mode == 'creation' && statut == 'erreur_creation'">
-      Adresse mail déjà utilisée
-    </div>
-    <div class="form-row">
-      <button @click="connexionCompte()" class="button" :class="{ 'button--disabled': !validationChamp }" v-if="mode == 'connexion'">
-        <span v-if="statut == 'chargement'">Connexion en cours...</span>
-        <span v-else>Connexion</span>
-      </button>
-      <button @click="creationCompte()" class="button" :class="{ 'button--disabled': !validationChamp }" v-else>
-        <span v-if="statut == 'chargement'">Création en cours...</span>
-        <span v-else>Créer mon compte</span>
-      </button>
-    </div>
-  </div>
+  <body>
+    <header>
+      <en-tête/>
+    </header>
+
+    <main>
+      <div>
+        <h1 v-if="mode == 'connexion'">Connexion</h1>
+        <h1 v-else>Inscription</h1>
+        <p v-if="mode == 'connexion'">Tu n as pas encore de compte ?<span class="card__action" @click="switchInscription()">Créer un compte</span></p>
+        <p v-else>Tu as déjà un compte ?<span class="card__action" @click="switchConnexion()">Se connecter</span></p>
+        <div class="form-row">
+          <input v-model="mail_client" class="form-row__input" type="text" placeholder="Adresse mail"/>
+        </div>
+        <div class="form-row" v-if="mode == 'creation'">
+          <input v-model="prenom" class="form-row__input" type="text" placeholder="Prénom"/>
+          <input v-model="nom" class="form-row__input" type="text" placeholder="Nom"/>
+          <input v-model="nom_societe" class="form-row__input" type="text" placeholder="Nom de la société" />
+          <input v-model="telephone" class="form-row__input" type="text" placeholder="Téléphone"/>
+          <input v-model="fonction" class="form-row__input" type="text" placeholder="Fonction"/>
+        </div>
+        <div class="form-row">
+          <input v-model="mdp" class="form-row__input" type="password" placeholder="Mot de passe"/>
+        </div>
+        <div class="form-row" v-if="mode == 'connexion' && statut == 'erreur_connexion'">
+          Adresse mail et/ou mot de passe invalide
+        </div>
+        <div class="form-row" v-if="mode == 'creation' && statut == 'erreur_creation'">
+          Adresse mail déjà utilisée
+        </div>
+        <div class="form-row">
+          <button @click="connexionCompte()" class="button" :class="{ 'button--disabled': !validationChamp }" v-if="mode == 'connexion'">
+            <span v-if="statut == 'chargement'">Connexion en cours...</span>
+            <span v-else>Connexion</span>
+          </button>
+          <button @click="creationCompte()" class="button" :class="{ 'button--disabled': !validationChamp }" v-else>
+            <span v-if="statut == 'chargement'">Création en cours...</span>
+            <span v-else>Créer mon compte</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <bas-de-page/>
+    </footer>
+  </body>
 </template>
 
 <script>
 
 import { mapState } from 'vuex'
+import EnTête from "@/components/EnTête";
+import BasDePage from "@/components/BasDePage";
 
 export default {
   name: "ConnexionSotrexco",
+  components: {BasDePage, EnTête},
   data: function () {
     return {
       mode: "connexion",
@@ -165,5 +179,16 @@ export default {
 .button--disabled:hover {
   cursor: not-allowed;
   background: #cecece;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 </style>
