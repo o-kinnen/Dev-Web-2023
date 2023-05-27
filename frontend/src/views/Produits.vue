@@ -11,7 +11,7 @@
 
       <div>
         <produitsListe :listeProduit="produits" :getProduits="getProduits"></produitsListe>
-        <produitAdd :getProduits="getProduits"></produitAdd>
+        <produitAdd v-if="this.utilisateur.role === 'admin'" :getProduits="getProduits"></produitAdd>
       </div>
     </main>
 
@@ -28,6 +28,7 @@ import ProduitAdd from "../components/ProduitAdd.vue";
 import { API } from "@/main";
 import EnTête from "@/components/EnTête";
 import BasDePage from "@/components/BasDePage";
+import { mapState } from 'vuex';
 
 export default {
   name: "ProduitsSotrexco",
@@ -44,6 +45,11 @@ export default {
   },
   mounted() {
     this.getProduits();
+  },
+  computed : {
+    ...mapState({
+      utilisateur : "utilisateur"
+    })
   },
   methods: {
     getProduits() {

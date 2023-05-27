@@ -61,8 +61,12 @@ export default {
   },
   methods: {
     getClients() {
-      //
-      axios.get(API + '/clients') //rajouter un header http authorization  avec comme valeur le jwt en paramètre
+      const token = this.$store.state.token;
+      axios.get(API + '/clients', {
+        headers : {
+          Authorization : `Bearer ${token}`
+        }
+      }) //rajouter un header http authorization  avec comme valeur le jwt en paramètre
           .then(response => {
             this.clients = response.data;
           })

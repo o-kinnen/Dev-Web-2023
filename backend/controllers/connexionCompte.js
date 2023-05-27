@@ -8,7 +8,7 @@ exports.connexionCompte = async (req, res) => {
     const mdp = req.body.mdp;
     try {
       const result = await db.pool.query(
-        'select mail_client, prenom, nom, role, nom_societe, telephone, mdp from tb_utilisateur where mail_client =?', mail
+        'select id_client, mail_client, prenom, nom, role, nom_societe, telephone, mdp from tb_utilisateur where mail_client =?', mail
       );//rajouter dans le select
       if (result.length > 0){
         const utilisateur = result[0];
@@ -24,16 +24,16 @@ exports.connexionCompte = async (req, res) => {
           const jwt = await new jose.SignJWT({ 'role': utilisateur.role }) //mettre à droite de rôle : result[0].role
             .setProtectedHeader({ alg })
             .setIssuedAt()
-            .setSubject(mail)
+            .setSubject(utilisateur.id_client)
             .setExpirationTime('2h')
             .sign(secret)
     
                 
-            res.status(201).json({utilisateur:utilisateur, token:jwt})
+            return res.status(201).json({utilisateur:utilisateur, token:jwt})
         }
-      } else {
+      } 
         res.sendStatus(401);// non authorisée
-      }
+      
     } catch (err) {
         console.log(err);
         res.sendStatus(500)// erreur dans le processus;
