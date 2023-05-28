@@ -1,6 +1,9 @@
 const db = require('../config/database');
 
 exports.getClients = async (req, res) => {
+  if (req.auth.role !== "admin"){
+    return res.status(401).send();
+  }
     try {
       const result = await db.pool.query('select * from tb_utilisateur');
       res.json(result)

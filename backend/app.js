@@ -10,7 +10,9 @@ const clientsRoutes = require('./routes/clients');
 const servicesRoutes = require('./routes/services');
 const realisationsRoutes = require('./routes/realisations');
 const produitsRoutes = require('./routes/produits');
-
+const { expressjwt: jwt } = require("express-jwt");
+const jwtOptions = require("./config/jwt");
+console.log(jwtOptions);
 // Configure les options CORS
 const corsOptions = {
   origin: '*', // Mettre l'origine autorisée de votre choix, ou '*' pour autoriser toutes les origines
@@ -25,9 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Liste des appels API
 app.use('/creationCompte', creationCompteRoutes);
 app.use('/connexionCompte', connexionCompteRoutes);
-app.use('/clients', clientsRoutes);
+app.use('/clients', jwt({ secret: jwtOptions.secret, algorithms: [jwtOptions.alg] }), clientsRoutes);
 app.use('/service', servicesRoutes);
 app.use('/realisation', realisationsRoutes);
 app.use('/produits', produitsRoutes);
-  
-module.exports = app;
+
+module.exports = app
+

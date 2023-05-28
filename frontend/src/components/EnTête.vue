@@ -6,7 +6,7 @@
           <li><router-link to="/produits">Produits</router-link></li>
           <li><router-link to="/service">Services</router-link></li>
           <li><router-link to="/realisation">Réalisations</router-link></li>
-          <li><router-link to="/clients">Liste des clients</router-link></li>
+          <li><router-link to="/clients" v-if="this.$store.state.utilisateur.role === 'admin'">Liste des clients</router-link></li>
           <li><router-link to="/connexion">Connexion/Inscription</router-link></li>
         </ul>
       </nav>

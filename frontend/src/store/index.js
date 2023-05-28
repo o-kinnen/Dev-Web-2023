@@ -6,6 +6,7 @@ const instance = axios.create({
     baseURL: 'http://localhost:3000'
 });
 let utilisateur = localStorage.getItem('utilisateur');
+let token = localStorage.getItem('token');
 if (!utilisateur) {
     utilisateur = {
         id_client: -1,
@@ -25,7 +26,7 @@ else {
 }
 const store = createStore({
     state: {
-        token:"",
+        token: token,
         statut: '',
         utilisateur: utilisateur,
         utilisateurInfos: {
@@ -48,6 +49,7 @@ const store = createStore({
             console.log(token);
             //instance.defaults.headers.common['Authorization'] = utilisateur.token;
             localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+            localStorage.setItem('token', token);
             state.token = token;
             state.utilisateur = utilisateur;
         },

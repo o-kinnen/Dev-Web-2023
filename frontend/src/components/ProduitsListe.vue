@@ -6,7 +6,7 @@
         <tr>
           <th>ID</th>
           <th>Nom du produit</th>
-          <th>Action</th>
+          <th v-if="this.utilisateur.role === 'admin'">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -14,7 +14,7 @@
           <td>{{ produit.id_produit }}</td>
           <td v-if="!produit.editMode">{{ produit.nom }}</td>
           <td v-else><input type="text" v-model="produit.nom"></td>
-          <td>
+          <td v-if="this.utilisateur.role === 'admin'">
             <button class="edit-button" v-if="!produit.editMode" @click="produit.editMode = true">Modifier</button>
             <button class="update-button" v-else @click="updateProduit(produit)">Valider</button>
             <button class="delete-button" @click="deleteProduit(produit.id_produit)">Supprimer</button>
@@ -29,7 +29,7 @@
 <script>
 import axios from 'axios';
 import { API } from "@/main";
-
+import { mapState } from 'vuex';
 export default {
   name: "ProduitsAffichage",
   props: {
@@ -44,6 +44,11 @@ export default {
     return {
       errorMessage: ""
     }
+  },
+  computed: {
+    ...mapState({
+      utilisateur : "utilisateur"
+    })
   },
   methods: {
     deleteProduit(id) {
