@@ -12,7 +12,7 @@ const realisationsRoutes = require('./routes/realisations');
 const produitsRoutes = require('./routes/produits');
 const { expressjwt: jwt } = require("express-jwt");
 const jwtOptions = require("./config/jwt");
-console.log(jwtOptions);
+
 // Configure les options CORS
 const corsOptions = {
   origin: '*', // Mettre l'origine autorisée de votre choix, ou '*' pour autoriser toutes les origines

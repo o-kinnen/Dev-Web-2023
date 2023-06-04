@@ -4,7 +4,7 @@
       <en-tête/>
     </header>
 
-  <main>
+  <main v-if="this.utilisateur.role === 'admin'">
     <h1>Vous êtes sur la page des clients</h1>
     <table class="clients-table">
       <thead>
@@ -29,6 +29,12 @@
     </table>
     <modale-clients @fermer="modaleOuverte=false" v-if="modaleOuverte == true" :id_client="modaleIdClient"></modale-clients>
   </main>
+  <main v-else>
+    <div class="autorisation">
+      <h1>Oops !</h1>
+      <h2>Vous n'êtes pas autorisé à accéder à cette page !</h2>
+    </div>
+  </main>
 
     <footer>
       <bas-de-page/>
@@ -42,6 +48,7 @@ import ModaleClients from "@/components/ModaleClients";
 import { API } from "@/main";
 import EnTête from "@/components/EnTête";
 import BasDePage from "@/components/BasDePage";
+import { mapState } from 'vuex';
 export default {
   name: "ClientsSotrexco",
   components: {
@@ -58,6 +65,11 @@ export default {
   },
   mounted() {
     this.getClients();
+  },
+  computed : {
+    ...mapState({
+      utilisateur : "utilisateur"
+    })
   },
   methods: {
     getClients() {
@@ -114,6 +126,10 @@ body {
 
 main {
   flex: 1;
+}
+
+.autorisation {
+  text-align: center;
 }
 
 </style>
