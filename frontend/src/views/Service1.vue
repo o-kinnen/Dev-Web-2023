@@ -10,7 +10,7 @@
           <h1>{{ service.nom_service }}</h1>
           <p>{{ service.service_description }}</p>
           <p>Ceci est une explication détaillée de la description</p>
-          <img src="../img/1.png" />
+          <img src="../img/services/1.png" />
         </div>
         <a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a>
       </section>
