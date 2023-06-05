@@ -13,6 +13,7 @@ import Realisation3 from "@/views/Realisation3";
 import Clients from "@/views/Clients";
 import Profile from "@/views/Profile";
 import Commande from "@/views/Commande";
+import Industrie from "@/views/Industrie";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -72,6 +73,10 @@ const router = createRouter({
         {
             path: "/commande",
             component: Commande
+        },
+        {
+            path: "/industrie",
+            component: Industrie
         }
     ]
 })

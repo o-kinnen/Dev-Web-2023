@@ -7,33 +7,55 @@
     <main>
       <section id="presentation">
         <div class="container">
-          <h2>Qui somme nous ?</h2>
-          <p>blablabla</p>
+          <h2>Qui sommes-nous ?</h2>
+          <p>
+            SOTREXCO INTERNATIONAL S.A. est une société anonyme de droit belge dont le siège social est situé au carrefour de l'Europe,
+            en Belgique, à Waterloo (à une vingtaine de kilomètres de Bruxelles).
+          </p>
+          <p>
+            SOTREXCO INTERNATIONAL est une société commerciale qui exporte vers l'Afrique une large gamme de biens et produits 
+            dans différents domaines, qu'il s'agisse de produits alimentaires, de bâches et toiles, de textile… Mais, elle est principalement 
+            active dans les domaines techniques et industriels, et elle assure toutes les prestations et services qui y sont associés.
+          </p>
+          <p>
+            Elle répond ainsi régulièrement à des appels d'offres pour la fourniture de véhicules, de matériel informatique et de télécommunications,
+            de pièces détachées, de matériel électromécanique, de pompes et groupes motopompes destinées aux industries et aux sociétés publiques,…
+          </p>
+          <p>
+            M. Victor SARAGOSSI, administrateur délégué de SOTREXCO INTERNATIONAL, est né en RDC. Il y a vécu de nombreuses années, ainsi qu'en Afrique du Sud,
+            au Rwanda et au Burundi. il a donc une connaissance approfondie de l'Afrique, de ses réalités et de ses marchés.
+          </p>
+          <p>
+            La valeur ajoutée de SOTREXCO INTERNATIONAL est la diversité de ses propositions, sa grande flexibilité, sa bonne connaissance des marchés, la qualité de ses réseaux.
+            Elle dispose ainsi d'une organisation simple et efficace, qui permet de voir rapidement aboutir les projets tout en sécurisant les paiements.
+          </p>
         </div>
       </section>
 
       <section id="activite">
         <div class="container">
-          <h2 class="center">Nos différents secteurs d'activités</h2>
+          <h2 class="center">Nos secteurs d'activité</h2>
           <br>
           <div class="activite-container">
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 1">
-              <h3>Industries</h3>
-              <p>Petite description</p>
+              <h3>Industrie</h3>
               <a href="/industrie" class="cta">En savoir plus</a>
             </div>
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 2">
               <h3>Alimentaire</h3>
-              <p>Petite description</p>
               <a href="/alimentaire" class="cta">En savoir plus</a>
             </div>
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 3">
               <h3>Bien d'équipement</h3>
-              <p>Petite description</p>
               <a href="/equipement" class="cta">En savoir plus</a>
+            </div>
+            <div class="activite">
+              <img src="https://via.placeholder.com/325x200" alt="Produit 4">
+              <h3>Commerce général</h3>
+              <a href="/commerce" class="cta">En savoir plus</a>
             </div>
           </div>
         </div>
@@ -41,47 +63,16 @@
 
       <section id="services">
         <div class="container">
-          <h2 class="center">Les services proposés</h2>
-          <br>
           <div class="services-container">
             <div class="services">
               <img src="https://via.placeholder.com/325x200" alt="Produit 1">
-              <h3>Industries</h3>
-              <p>Petite description</p>
+              <h3>Catering</h3>
               <a href="/service" class="cta">En savoir plus</a>
             </div>
             <div class="services">
               <img src="https://via.placeholder.com/325x200" alt="Produit 2">
-              <h3>Alimentaire</h3>
-              <p>Petite description</p>
+              <h3>Services</h3>
               <a href="/service" class="cta">En savoir plus</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="realisation">
-        <div class="container">
-          <h2 class="center">Nos réalisations</h2>
-
-          <div class="realisation-container">
-            <div class="realisation">
-              <img src="https://via.placeholder.com/325x200" alt="Produit 1">
-              <h3>~~~~~~~~~~~~~~~~~~</h3>
-              <p>Petite description</p>
-              <a href="/realisation" class="cta">En savoir plus</a>
-            </div>
-            <div class="realisation">
-              <img src="https://via.placeholder.com/325x200" alt="Produit 2">
-              <h3>~~~~~~~~~~~~~~~~~~</h3>
-              <p>Petite description</p>
-              <a href="/realisation" class="cta">En savoir plus</a>
-            </div>
-            <div class="realisation">
-              <img src="https://via.placeholder.com/325x200" alt="Produit 3">
-              <h3>~~~~~~~~~~~~~~~~~~</h3>
-              <p>Petite description</p>
-              <a href="/realisation" class="cta">En savoir plus</a>
             </div>
           </div>
         </div>
