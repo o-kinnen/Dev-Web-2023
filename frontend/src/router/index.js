@@ -14,6 +14,10 @@ import Clients from "@/views/Clients";
 import Profile from "@/views/Profile";
 import Commande from "@/views/Commande";
 import Industrie from "@/views/Industrie";
+import Alimentaire from "@/views/Alimentaire";
+import Equipement from "@/views/Equipement";
+import Commerce from "@/views/Commerce";
+import Catering from "@/views/Catering";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -77,6 +81,23 @@ const router = createRouter({
         {
             path: "/industrie",
             component: Industrie
+        },
+        {
+            path: "/alimentaire",
+            component: Alimentaire
+        },
+        {
+            path: "/equipement",
+            component: Equipement
+        }
+        ,
+        {
+            path: "/commerce",
+            component: Commerce
+        },
+        {
+            path: "/catering",
+            component: Catering
         }
     ]
 })

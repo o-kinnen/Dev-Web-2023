@@ -67,7 +67,7 @@
             <div class="services">
               <img src="https://via.placeholder.com/325x200" alt="Produit 1">
               <h3>Catering</h3>
-              <a href="/service" class="cta">En savoir plus</a>
+              <a href="/catering" class="cta">En savoir plus</a>
             </div>
             <div class="services">
               <img src="https://via.placeholder.com/325x200" alt="Produit 2">
