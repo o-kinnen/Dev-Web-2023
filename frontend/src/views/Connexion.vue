@@ -8,7 +8,7 @@
       <div>
         <h1 v-if="mode == 'connexion'">Connexion</h1>
         <h1 v-else>Inscription</h1>
-        <p v-if="mode == 'connexion'">Tu n as pas encore de compte ?<span class="card__action" @click="switchInscription()">Créer un compte</span></p>
+        <p v-if="mode == 'connexion'">Tu n'as pas encore de compte ?<span class="card__action" @click="switchInscription()">Créer un compte</span></p>
         <p v-else>Tu as déjà un compte ?<span class="card__action" @click="switchConnexion()">Se connecter</span></p>
         <div class="form-row">
           <input v-model="mail_client" class="form-row__input" type="text" placeholder="Adresse mail"/>
