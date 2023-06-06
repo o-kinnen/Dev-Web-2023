@@ -1,6 +1,7 @@
 [build]
   command = "cd frontend && npm install && npm run build && cd ../backend && npm install && node server.js"
   publish = "frontend/src"
+  port = 3100
 
 [[plugins]]
   package = "netlify-plugin-cache"
