@@ -7,10 +7,12 @@
     <main>
       <div class="card">
         <h1 class="card__title">Espace Perso</h1>
-        <p class="card__subtitle">Voilà donc qui je suis...</p>
-        <p>Prénom & Nom : {{utilisateur.prenom}} {{utilisateur.nom}} </p>
+
+        <p>Prénom & Nom : : {{utilisateur.nom}} {{utilisateur.prenom}} </p>
         <p>Adresse mail : {{utilisateur.mail_client}}</p>
-        <p>Numéro de téléphone: {{ utilisateur.telephone }}</p>
+        <p>Numéro de téléphone : {{utilisateur.telephone}}</p>
+        <p>Société : {{utilisateur.nom_societe}}</p>
+        
         <div class="form-row">
           <button @click="deconnexion()" class="button">
             Déconnexion
@@ -26,7 +28,6 @@
 </template>
 
 <script>
-  //import axios from 'axios';
   import { mapState } from 'vuex'
   import EnTête from "@/components/EnTête";
   import BasDePage from "@/components/BasDePage";
@@ -39,13 +40,11 @@
       }
     },
     mounted: function () {
-      //this.getInfos();
       console.log(this.$store.state.utilisateur);
       if (this.$store.state.utilisateur.id_client == -1){
         this.$router.push('/connexion');
         return;
       }
-      //this.$store.dispatch('recevoirUtilisateurInfos');
     },
     computed: {
       ...mapState({
@@ -53,15 +52,6 @@
       })
     },
     methods: {
-      /*getInfos() {
-        axios.get('http://localhost:3000/infos')
-          .then(response => {
-            this.profile = response.data;
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      },*/
       deconnexion: function (){
         this.$store.commit('deconnexion');
         this.$router.push('/connexion');

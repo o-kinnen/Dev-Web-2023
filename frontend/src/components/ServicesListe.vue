@@ -1,6 +1,6 @@
 <template>
   <div v-for="(service, index) in listeService" :key="index">
-    <img :src ="images[service.id_service - 1]" width = "150" height = "150">
+    <img :src ="getImages(service.id_service)" width = "150" height = "150">
     <p>{{service.nom_service}}</p>
     <p>{{service.service_description}}</p>
     <p><a :href = "/service/ + service.id_service">En savoir plus</a></p>
@@ -8,12 +8,21 @@
 </template>
 
 <script>
+const imagesContext = require.context('../img/services', false, /\.(png|jpe?g|gif|webp)$/);
+const images = imagesContext.keys().map(key => imagesContext(key));
+
   export default {
     name: "ServicesAffichage",
     props: ['listeService'],
     data (){
       return {
-        images : [ require('../img/1.png'),require('../img/2.png'),require('../img/3.jpg') ]
+        images: images
+      }
+    },
+    methods: {
+      getImages(serviceId) {
+        // Retourner l'image correspondante à l'identifiant de réalisation
+        return this.images[serviceId - 1];
       }
     }
   }

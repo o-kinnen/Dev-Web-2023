@@ -4,7 +4,7 @@
       <en-tête/>
     </header>
 
-    <main>
+    <main v-if="this.utilisateur.role === 'client'">
     <p>Vous voulez commander un service/produit ?</p>
       <form>
         <p>
@@ -35,6 +35,12 @@
         </p>
       </form>
     </main>
+    <main v-else>
+      <div>
+        <h1>Oops !</h1>
+        <h2><span class="card__action" @click="deconnexion()">Vous devez vous connecter pour introduire une commande !</span></h2>
+      </div>
+    </main>
 
     <footer>
       <bas-de-page/>
@@ -45,6 +51,7 @@
 <script>
 import EnTête from "@/components/EnTête";
 import BasDePage from "@/components/BasDePage";
+import { mapState } from 'vuex';
 export default {
   name: "CommandeTest",
   components: {BasDePage, EnTête},
@@ -55,6 +62,16 @@ export default {
       mail: '',
       nom: ''
     }
+  },
+  methods: {
+      deconnexion: function (){
+        this.$router.push('/connexion');
+      }
+  },
+  computed : {
+    ...mapState({
+      utilisateur : "utilisateur"
+    })
   }
 }
 
@@ -74,6 +91,13 @@ body {
 
 main {
   flex: 1;
+}
+.card__action {
+  color: #2196f3;
+  text-decoration: underline;
+}
+.card__action:hover {
+  cursor: pointer;
 }
 
 </style>
