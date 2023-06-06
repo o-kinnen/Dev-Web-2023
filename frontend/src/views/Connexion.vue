@@ -30,7 +30,7 @@
           Adresse mail déjà utilisée
         </div>
         <div class="form-row">
-          <button @click="connexionCompte()" class="button" :class="{ 'button--disabled': !validationChamp }" v-if="mode == 'connexion'">
+          <button data-test-id="submit" @click="connexionCompte()" class="button" :class="{ 'button--disabled': !validationChamp }" v-if="mode == 'connexion'">
             <span v-if="statut == 'chargement'">Connexion en cours...</span>
             <span v-else>Connexion</span>
           </button>
@@ -105,13 +105,13 @@ export default {
     switchConnexion: function () {
         this.mode = "connexion";
     },
-    connexionCompte: function () {
+    connexionCompte: function () {//action dans le store
       const self = this;
       this.$store.dispatch("connexionCompte", {
         mail_client: this.mail_client,
         mdp: this.mdp,
-      }).then(function () {
-        self.$router.push('/profile');
+      }).then(function () {//then = promess js--> soit elle échoue, soit elle se résout. Si promesse résolue --> exécute la1ère fct, sinon exécute la 2ème
+        self.$router.push('/profile');//comme si on clique vers la page profil
       }, function (error) {
         console.log(error);
       })

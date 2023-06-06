@@ -15,7 +15,7 @@ exports.creationCompte = async (req, res) => {
       const hashedPassword = await bcrypt.hash(mdp, 10); // Hash du mot de passe avec un coût de 10
       const result = await db.pool.query(
         'insert into tb_utilisateur (nom, mdp, role, fonction, telephone, nom_societe, mail_client, prenom) values (?, ?, ?, ?, ?, ?, ?, ?)', [nom, hashedPassword, role, fonction, telephone, nom_societe, mail_client, prenom]);
-      console.log(result);
+      //console.log(await db.pool.query("select * from tb_utilisateur"));
       res.send(result);
     } catch (err) {
       console.log(err);

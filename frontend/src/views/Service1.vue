@@ -7,7 +7,7 @@
     <main>
       <section>
         <div class="service" v-for="service in services" :key="service.id_service">
-          <h1>{{ service.nom_service }}</h1>
+          <h1 data-test-id="fow">{{ service.nom_service }}</h1>
           <p>{{ service.service_description }}</p>
           <p>Ceci est une explication détaillée de la description</p>
           <img src="../img/1.png" />

@@ -5,7 +5,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Infos sur le client</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -44,15 +44,22 @@
 
 
 <script>
-import { Modal } from "bootstrap"
+import { Modal } from "bootstrap";
 import axios from "axios";
 import { API } from "@/main";
 export default {
   name: "ModaleClients",
-  props: ["id_client"],
+  props: ["id_client"], //reçoit la propriété id_client
   methods: {
     getClient() {
-      axios.get(API + '/clients/' + this.id_client)
+      const token = this.$store.state.token;
+      axios.get(API + '/clients/' + this.id_client,
+        {
+          headers : {
+            Authorization : `Bearer ${token}`
+          }
+        }
+        )
         .then(response => {
           this.client = response.data[0];
         })
