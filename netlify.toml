@@ -3,9 +3,6 @@
   publish = "frontend/src"
 
 [[plugins]]
-  package = "@netlify/plugin-functions-core"
-
-[[plugins]]
   package = "netlify-plugin-cache"
 
 [[plugins]]
