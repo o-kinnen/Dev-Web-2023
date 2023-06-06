@@ -1,5 +1,5 @@
 [build]
-  command = "cd backend && npm install && node server.js && cd ../frontend && npm install && npm run serve"
+  command = "cd frontend && npm install && npm run serve && cd ../backend && npm install && node server.js"
   publish = "frontend/src"
 
 [[plugins]]
