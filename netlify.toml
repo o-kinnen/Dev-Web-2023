@@ -1,0 +1,12 @@
+[build]
+  command = "cd backend && npm install && node server.js && cd ../frontend && npm install && npm run serve"
+  publish = "frontend/src"
+
+[[plugins]]
+  package = "@netlify/plugin-functions-core"
+
+[[plugins]]
+  package = "netlify-plugin-cache"
+
+[[plugins]]
+  package = "netlify-plugin-no-index"
