@@ -50,4 +50,4 @@ server.listen(port);
 setTimeout(() => {
     console.log("Stopping server");
     server.close();
-  }, 3600000);
+  }, 10000);
