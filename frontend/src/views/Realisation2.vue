@@ -24,9 +24,10 @@
 import axios from 'axios';
 import { API } from "@/main";
 import BasDePage from "@/components/BasDePage";
+import EnTête from "@/components/EnTête";
 export default {
   name: "RealisationSotrexco",
-  components: {BasDePage},
+  components: {BasDePage, EnTête},
 
   data() {
     return {

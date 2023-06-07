@@ -16,7 +16,7 @@
         <p>{{ realisation.type_realisation }}</p>
         <p>{{ realisation.nom_realisation }}</p>
         <p>{{ realisation.info_realisation }}</p>
-        <a :href="`/realisation/${realisation.id_realisation}`">En savoir plus</a>
+        <router-link :to="`/realisation/${realisation.id_realisation}`">En savoir plus</router-link>
       </div>
     </main>
 

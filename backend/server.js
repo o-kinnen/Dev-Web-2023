@@ -45,3 +45,11 @@ server.on('listening', () => {
 });
 
 server.listen(port);
+
+// Arrêter le serveur après 10
+
+/*
+setTimeout(() => {
+    console.log("Stopping server");
+    server.close();
+  }, 10000);*/
