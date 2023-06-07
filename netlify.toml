@@ -6,4 +6,6 @@
 [[plugins]]
   package = "netlify-plugin-cache"
 
+[build.environment]
+  VUE_APP_API = "http://35.180.226.215:3100"
 
