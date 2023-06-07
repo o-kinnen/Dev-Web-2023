@@ -1,7 +1,4 @@
 [build]
-  command = "cd frontend && npm install && npm run build -- --config vue.config.js && cd ../backend && npm install && node server.js"
-  publish = "frontend/dist"
-  port = 3100
+  command = "cd backend && npm install && node server.js"
+  publish = "backend"
 
-[[plugins]]
-  package = "netlify-plugin-cache"
