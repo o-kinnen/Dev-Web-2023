@@ -3,7 +3,7 @@
     <img :src ="getImages(service.id_service)" width = "150" height = "150">
     <p>{{service.nom_service}}</p>
     <p>{{service.service_description}}</p>
-    <p><a :href = "/service/ + service.id_service">En savoir plus</a></p>
+    <p><router-link :to="/service/ + service.id_service">En savoir plus</router-link></p>
   </div>
 </template>
 
