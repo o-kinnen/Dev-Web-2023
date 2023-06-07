@@ -1,6 +1,5 @@
 [build]
-  command = "cd frontend && npm install && npm run build -- --config vue.config.js && cd ../backend && npm install && pm2 start server.js
-"
+  command = "cd frontend && npm install && npm run build -- --config vue.config.js"
   publish = "frontend/dist"
   port = 3100
 
