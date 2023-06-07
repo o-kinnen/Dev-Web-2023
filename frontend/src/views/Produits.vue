@@ -25,7 +25,7 @@
 import axios from 'axios';
 import ProduitsListe from "../components/ProduitsListe.vue";
 import ProduitAdd from "../components/ProduitAdd.vue";
-//import { API } from "@/main";
+import { API } from "@/main";
 import EnTête from "@/components/EnTête";
 import BasDePage from "@/components/BasDePage";
 import { mapState } from 'vuex';
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     getProduits() {
-      axios.get('http://13.39.37.69:3100/produits')
+      axios.get(API + '/produits')
         .then(response => {
           this.produits = response.data;
         })

@@ -3,6 +3,9 @@
   publish = "frontend/dist"
   port = 3100
 
+[context.production.environment]
+  VUE_APP_API = "http://13.39.37.69:3100"
+
 [[plugins]]
   package = "netlify-plugin-cache"
 
