@@ -40,22 +40,22 @@
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 1">
               <h3>Industrie</h3>
-              <a href="/industrie" class="cta">En savoir plus</a>
+              <router-link to="/industrie" class="cta">En savoir plus</router-link>
             </div>
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 2">
               <h3>Alimentaire</h3>
-              <a href="/alimentaire" class="cta">En savoir plus</a>
+              <router-link to="/alimentaire" class="cta">En savoir plus</router-link>
             </div>
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 3">
               <h3>Bien d'équipement</h3>
-              <a href="/equipement" class="cta">En savoir plus</a>
+              <router-link to="/equipement" class="cta">En savoir plus</router-link>
             </div>
             <div class="activite">
               <img src="https://via.placeholder.com/325x200" alt="Produit 4">
               <h3>Commerce général</h3>
-              <a href="/commerce" class="cta">En savoir plus</a>
+              <router-link to="/commerce" class="cta">En savoir plus</router-link>
             </div>
           </div>
         </div>
