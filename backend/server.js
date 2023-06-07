@@ -46,7 +46,8 @@ server.on('listening', () => {
 
 server.listen(port);
 
-// Arrêter le serveur après 10 secondes
+// Arrêter le serveur après 10
+
 
 setTimeout(() => {
     console.log("Stopping server");
