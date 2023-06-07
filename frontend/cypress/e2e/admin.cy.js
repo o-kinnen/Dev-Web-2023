@@ -36,6 +36,6 @@ describe("connexion admin", () => {
         cy.get('[data-test-id="submit"]').click();
         cy.visit('/profile')
         cy.visit('/clients')
-        cy.get('[data-test-id="identite"]').click()
+        cy.get('[data-test-id="identite"]').click({ multiple: true, force: true })
     })
   })
