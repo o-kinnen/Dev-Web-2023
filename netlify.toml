@@ -6,6 +6,4 @@
 [[plugins]]
   package = "netlify-plugin-cache"
 
-[build.environment]
-  VUE_APP_API = "http://localhost:3100"
 
