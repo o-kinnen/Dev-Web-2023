@@ -20,13 +20,15 @@
       <tbody>
       <tr v-for="(client, index) in clients" :key="index">
         <td>{{client.nom_societe}}</td>
-        <td @click="ouvrirModale(client.id_client)">{{client.prenom}} {{client.nom}}</td>
+        <td @click="ouvrirModale(client.id_client)" data-test-id="identite">{{client.prenom}} {{client.nom}}</td>
         <td>{{client.fonction}}</td>
         <td><a :href="`tel:${client.telephone}`">{{client.telephone}}</a></td>
         <td><a :href="`mailto:${client.mail_client}`">{{client.mail_client}}</a></td>
       </tr>
       </tbody>
     </table>
+    <!--id_client est une propriété (props) de modaleClient (modale client reçoit la props de clients.vue) et id du client est modaleIdClient = 9
+    -->
     <modale-clients @fermer="modaleOuverte=false" v-if="modaleOuverte == true" :id_client="modaleIdClient"></modale-clients>
   </main>
   <main v-else>

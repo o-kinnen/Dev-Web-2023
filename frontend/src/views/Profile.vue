@@ -7,11 +7,12 @@
     <main>
       <div class="card">
         <h1 class="card__title">Espace Perso</h1>
-        <p>Personne de contact : {{utilisateur.nom}} {{utilisateur.prenom}} </p>
+
+        <p>Prénom & Nom : : {{utilisateur.nom}} {{utilisateur.prenom}} </p>
         <p>Adresse mail : {{utilisateur.mail_client}}</p>
         <p>Numéro de téléphone : {{utilisateur.telephone}}</p>
         <p>Société : {{utilisateur.nom_societe}}</p>
-        <p>Fonction : {{utilisateur.fonction}}</p>
+        
         <div class="form-row">
           <button @click="deconnexion()" class="button">
             Déconnexion

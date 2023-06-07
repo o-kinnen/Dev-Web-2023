@@ -1,9 +1,9 @@
 <template>
     <div class="EnTête">
       <h1><router-link to="/">Sotrexco</router-link></h1>
-      <nav>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <ul>
-          <li><router-link to="/produits">Produits</router-link></li>
+          <li class="nav-link"><router-link to="/produits">Produits</router-link></li>
           <li><router-link to="/service">Services</router-link></li>
           <li><router-link to="/realisation">Réalisations</router-link></li>
           <li><router-link to="/clients" v-if="this.$store.state.utilisateur.role === 'admin'">Liste des clients</router-link></li>

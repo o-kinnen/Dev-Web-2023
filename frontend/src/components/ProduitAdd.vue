@@ -1,5 +1,5 @@
 <template>
-    <button class="ajouter" v-on:click="showForm = true">Ajouter un produit</button>
+    <button class="btn btn-success" v-on:click="showForm = true">Ajouter un produit</button>
     <form v-if="showForm" @submit.prevent="addProduit">
         <br>
         <label>
@@ -7,7 +7,7 @@
             <input type="text" v-model="nomProduit" required>
         </label>
         <br>
-        <button class="valider" type="submit">Ajouter</button>
+        <button  type="submit">Ajouter</button>
         <button class="annuler" @click="showForm = false">Annuler</button>
     </form>
 </template>
@@ -15,7 +15,6 @@
 <script>
 import axios from 'axios';
 import { API } from "@/main";
-
 export default {
     name: "ProduitsAdd",
     props: {
@@ -47,7 +46,7 @@ export default {
     }
 };
 </script>
-
+<!--
 <style scoped>
 form {
     border: 1px solid #ddd;
@@ -110,4 +109,4 @@ input[type="text"] {
     border-radius: 4px;
     font-size: 16px;
 }
-</style>
+</style> -->

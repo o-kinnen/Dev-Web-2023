@@ -1,23 +1,21 @@
 <template>
   <br><br>
   <div class="product-list">
-    <table class="product-table">
+    <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Nom du produit</th>
           <th v-if="this.utilisateur.role === 'admin'">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(produit, index) in listeProduit" :key="index">
-          <td>{{ produit.id_produit }}</td>
           <td v-if="!produit.editMode">{{ produit.nom }}</td>
           <td v-else><input type="text" v-model="produit.nom"></td>
           <td v-if="this.utilisateur.role === 'admin'">
-            <button class="edit-button" v-if="!produit.editMode" @click="produit.editMode = true">Modifier</button>
+            <button class="btn btn-primary" v-if="!produit.editMode" @click="produit.editMode = true">Modifier</button>
             <button class="update-button" v-else @click="updateProduit(produit)">Valider</button>
-            <button class="delete-button" @click="deleteProduit(produit.id_produit)">Supprimer</button>
+            <button class="btn btn-danger" @click="deleteProduit(produit.id_produit)">Supprimer</button>
           </td>
         </tr>
       </tbody>
@@ -79,7 +77,7 @@ export default {
   }
 };
 </script>
-
+<!--
 <style scoped>
 .product-list {
   margin: 50px auto;
@@ -160,4 +158,4 @@ td button {
   color: red;
   font-weight: bold;
 }
-</style>
+</style>-->

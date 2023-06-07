@@ -66,7 +66,7 @@ const store = createStore({
     },
     actions: {
         connexionCompte: ({commit}, utilisateurInfos) => {
-            commit('initStatut', 'chargement');
+            commit('initStatut', 'chargement');//change la valeurde initstatus à chargement
             return new Promise((resolve, reject) => {
                 instance.post('/connexionCompte', utilisateurInfos)
                 .then(function (response){

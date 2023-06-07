@@ -69,7 +69,6 @@ export default {
 </script>
 
 <style scoped>
-
 #intro h2 {
   font-size: 45px;
   font-weight: bold;
@@ -106,5 +105,4 @@ body {
 main {
   flex: 1;
 }
-
 </style>
