@@ -47,7 +47,8 @@ server.on('listening', () => {
 server.listen(port);
 
 // Arrêter le serveur après 1h
+/*
 setTimeout(() => {
     console.log("Stopping server");
     server.close();
-  }, 10000);
+  }, 10000);*/

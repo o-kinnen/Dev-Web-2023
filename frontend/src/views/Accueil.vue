@@ -67,12 +67,12 @@
             <div class="services">
               <img src="https://via.placeholder.com/325x200" alt="Produit 1">
               <h3>Catering</h3>
-              <a href="/catering" class="cta">En savoir plus</a>
+              <router-link to="/catering" class="cta">En savoir plus</router-link>
             </div>
             <div class="services">
               <img src="https://via.placeholder.com/325x200" alt="Produit 2">
               <h3>Services</h3>
-              <a href="/service" class="cta">En savoir plus</a>
+              <router-link to="/service" class="cta">En savoir plus</router-link>
             </div>
           </div>
         </div>

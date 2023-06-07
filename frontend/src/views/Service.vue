@@ -17,7 +17,7 @@
           <servicesListe :listeService="services"></servicesListe>
         </div>
         <div class="contact">
-          <p><a :href = "/commande/" >Commander</a></p>
+          <p><router-link to="/commande">Commander</router-link></p>
           <p><a href="mailto:a.kalinowska@students.ephec.be">Contactez-moi</a></p>
         </div>
       </section>
